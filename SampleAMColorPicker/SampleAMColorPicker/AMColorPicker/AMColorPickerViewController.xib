@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AMColorPickerViewController" customModule="TestProject" customModuleProvider="target">
+            <connections>
+                <outlet property="cpSliderView" destination="Xy3-wJ-j1R" id="ZRu-OW-q72"/>
+                <outlet property="cpTableView" destination="2n3-Yu-sgT" id="sHa-ij-yJk"/>
+                <outlet property="cpWheelView" destination="lj0-Ta-LSf" id="d4n-8m-agm"/>
+                <outlet property="segment" destination="M0K-rf-C1H" id="9ui-0T-Syj"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNt-Hq-Lr5">
+                    <rect key="frame" x="0.0" y="20" width="375" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u26-67-pAN">
+                            <rect key="frame" x="15" y="5" width="60" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="8uu-EG-KbX"/>
+                                <constraint firstAttribute="width" constant="60" id="sbc-OL-MfJ"/>
+                            </constraints>
+                            <state key="normal" title="閉じる"/>
+                            <connections>
+                                <action selector="tappedCloseButton:" destination="-1" eventType="touchUpInside" id="uxJ-3s-5yV"/>
+                            </connections>
+                        </button>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M0K-rf-C1H">
+                            <rect key="frame" x="90" y="5" width="270" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="HqD-Rk-DDW"/>
+                            </constraints>
+                            <segments>
+                                <segment title="Wheel"/>
+                                <segment title="Table"/>
+                                <segment title="Slider"/>
+                            </segments>
+                            <connections>
+                                <action selector="changedSegment:" destination="-1" eventType="valueChanged" id="ytU-PZ-IDF"/>
+                            </connections>
+                        </segmentedControl>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="u26-67-pAN" firstAttribute="leading" secondItem="zNt-Hq-Lr5" secondAttribute="leading" constant="15" id="CL9-5P-0nW"/>
+                        <constraint firstItem="u26-67-pAN" firstAttribute="centerY" secondItem="zNt-Hq-Lr5" secondAttribute="centerY" id="QuC-Th-3Or"/>
+                        <constraint firstAttribute="trailing" secondItem="M0K-rf-C1H" secondAttribute="trailing" constant="15" id="Xb5-VB-7fC"/>
+                        <constraint firstAttribute="height" constant="40" id="Z6b-vi-OBD"/>
+                        <constraint firstItem="M0K-rf-C1H" firstAttribute="leading" secondItem="u26-67-pAN" secondAttribute="trailing" constant="15" id="riD-Mn-beP"/>
+                        <constraint firstItem="M0K-rf-C1H" firstAttribute="centerY" secondItem="zNt-Hq-Lr5" secondAttribute="centerY" id="uq0-pR-kuG"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xy3-wJ-j1R" customClass="AMColorPickerRGBSliderView" customModule="TestProject" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2n3-Yu-sgT" customClass="AMColorPickerTableView" customModule="TestProject" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lj0-Ta-LSf" customClass="AMColorPickerWheelView" customModule="TestProject" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="lj0-Ta-LSf" firstAttribute="centerX" secondItem="Xy3-wJ-j1R" secondAttribute="centerX" id="7SV-Rd-WNN"/>
+                <constraint firstItem="lj0-Ta-LSf" firstAttribute="height" secondItem="Xy3-wJ-j1R" secondAttribute="height" id="7p2-rc-NBL"/>
+                <constraint firstItem="2n3-Yu-sgT" firstAttribute="centerX" secondItem="Xy3-wJ-j1R" secondAttribute="centerX" id="Gm1-Zz-oL9"/>
+                <constraint firstItem="Xy3-wJ-j1R" firstAttribute="top" secondItem="zNt-Hq-Lr5" secondAttribute="bottom" id="Jgo-C2-PMm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Xy3-wJ-j1R" secondAttribute="bottom" id="RA6-Jb-QZ3"/>
+                <constraint firstItem="2n3-Yu-sgT" firstAttribute="width" secondItem="Xy3-wJ-j1R" secondAttribute="width" id="SS9-lQ-DbM"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Xy3-wJ-j1R" secondAttribute="trailing" id="SZ0-pX-kSA"/>
+                <constraint firstItem="2n3-Yu-sgT" firstAttribute="centerY" secondItem="Xy3-wJ-j1R" secondAttribute="centerY" id="SiU-Rw-3FL"/>
+                <constraint firstItem="lj0-Ta-LSf" firstAttribute="centerY" secondItem="Xy3-wJ-j1R" secondAttribute="centerY" id="TBm-tD-LcI"/>
+                <constraint firstItem="zNt-Hq-Lr5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="gJE-Md-WnR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zNt-Hq-Lr5" secondAttribute="trailing" id="ldd-Ij-M8q"/>
+                <constraint firstItem="Xy3-wJ-j1R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="waI-bQ-7Jy"/>
+                <constraint firstItem="zNt-Hq-Lr5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zGm-GY-Swc"/>
+                <constraint firstItem="lj0-Ta-LSf" firstAttribute="width" secondItem="Xy3-wJ-j1R" secondAttribute="width" id="zXN-QL-ejH"/>
+                <constraint firstItem="2n3-Yu-sgT" firstAttribute="height" secondItem="Xy3-wJ-j1R" secondAttribute="height" id="zsS-ES-Jak"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>
