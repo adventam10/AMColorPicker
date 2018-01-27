@@ -59,6 +59,7 @@ class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     @IBOutlet weak private var colorView: UIView!
     @IBOutlet weak private var hexTextField: UITextField!
     
+    private var previousText = ""
     
     override init(frame: CGRect) {
         
@@ -102,6 +103,7 @@ class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
         
         if !characterSet.isSuperset(of: stringCharacterSet) {
             
+            textField.text = previousText
             return
         }
         
@@ -147,6 +149,7 @@ class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
             return false
         }
         
+        previousText = currentText
         return true
     }
     
