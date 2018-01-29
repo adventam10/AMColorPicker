@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AMColorPickerViewController" customModule="TestProject" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AMColorPickerViewController" customModule="SampleAMColorPicker" customModuleProvider="target">
             <connections>
                 <outlet property="cpSliderView" destination="Xy3-wJ-j1R" id="ZRu-OW-q72"/>
                 <outlet property="cpTableView" destination="2n3-Yu-sgT" id="sHa-ij-yJk"/>
@@ -33,7 +33,7 @@
                                 <constraint firstAttribute="height" constant="30" id="8uu-EG-KbX"/>
                                 <constraint firstAttribute="width" constant="60" id="sbc-OL-MfJ"/>
                             </constraints>
-                            <state key="normal" title="閉じる"/>
+                            <state key="normal" title="close"/>
                             <connections>
                                 <action selector="tappedCloseButton:" destination="-1" eventType="touchUpInside" id="uxJ-3s-5yV"/>
                             </connections>
@@ -63,15 +63,15 @@
                         <constraint firstItem="M0K-rf-C1H" firstAttribute="centerY" secondItem="zNt-Hq-Lr5" secondAttribute="centerY" id="uq0-pR-kuG"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xy3-wJ-j1R" customClass="AMColorPickerRGBSliderView" customModule="TestProject" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xy3-wJ-j1R" customClass="AMColorPickerRGBSliderView" customModule="SampleAMColorPicker" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2n3-Yu-sgT" customClass="AMColorPickerTableView" customModule="TestProject" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2n3-Yu-sgT" customClass="AMColorPickerTableView" customModule="SampleAMColorPicker" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lj0-Ta-LSf" customClass="AMColorPickerWheelView" customModule="TestProject" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lj0-Ta-LSf" customClass="AMColorPickerWheelView" customModule="SampleAMColorPicker" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>

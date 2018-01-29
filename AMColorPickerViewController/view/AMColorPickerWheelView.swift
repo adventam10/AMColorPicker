@@ -1,6 +1,6 @@
 //
 //  AMColorPickerWheelView.swift
-//  TestProject
+//  AMColorPicker, https://github.com/adventam10/AMColorPicker
 //
 //  Created by am10 on 2018/01/04.
 //  Copyright © 2018年 am10. All rights reserved.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol AMColorPickerWheelViewDelegate: class {
+public protocol AMColorPickerWheelViewDelegate: class {
     
     func colorPickerWheelView(colorPickerWheelView: AMColorPickerWheelView, didSelect color: UIColor)
 }
 
-class AMColorPickerWheelView: UIView {
+public class AMColorPickerWheelView: UIView {
     
-    weak var delegate:AMColorPickerWheelViewDelegate?
-    var selectedColor:UIColor = UIColor.white {
+    weak public var delegate:AMColorPickerWheelViewDelegate?
+    public var selectedColor:UIColor = UIColor.white {
         
         didSet {
             
@@ -51,13 +51,13 @@ class AMColorPickerWheelView: UIView {
     @IBOutlet weak private var cursorImageView: UIImageView!
     
     //MARK:Initialize
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         
         super.init(frame: frame)
         loadNib()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)!
         loadNib()
@@ -72,7 +72,7 @@ class AMColorPickerWheelView: UIView {
         addSubview(view)
     }
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         
         super.awakeFromNib()
         colorPickerImageView.isUserInteractionEnabled = true
@@ -83,7 +83,7 @@ class AMColorPickerWheelView: UIView {
         colorPickerImageView.addGestureRecognizer(tap)
     }
     
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         
         let point = caluculatePoint(color: selectedColor)
         cursorImageView.center = point

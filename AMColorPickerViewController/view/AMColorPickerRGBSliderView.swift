@@ -1,6 +1,6 @@
 //
 //  AMColorPickerRGBSliderView.swift
-//  TestProject
+//  AMColorPicker, https://github.com/adventam10/AMColorPicker
 //
 //  Created by am10 on 2018/01/03.
 //  Copyright © 2018年 am10. All rights reserved.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol AMColorPickerRGBSliderViewDelegate: class {
+public protocol AMColorPickerRGBSliderViewDelegate: class {
     
     func colorPickerRGBSliderView(colorPickerRGBSliderView: AMColorPickerRGBSliderView, didSelect color: UIColor)
 }
 
-class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
+public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
 
-    weak var delegate:AMColorPickerRGBSliderViewDelegate?
-    var selectedColor:UIColor = UIColor.white {
+    weak public var delegate:AMColorPickerRGBSliderViewDelegate?
+    public var selectedColor:UIColor = UIColor.white {
         
         didSet {
             
@@ -61,13 +61,13 @@ class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     
     private var previousText = ""
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         
         super.init(frame: frame)
         loadNib()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)!
         loadNib()
@@ -82,7 +82,7 @@ class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
         addSubview(view)
     }
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         
         super.awakeFromNib()
         hexTextField.addTarget(self, action: #selector(self.didChange(textField:)), for: .editingChanged)
@@ -134,7 +134,7 @@ class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     }
     
     //MARK:UITextField Delegate
-    func textField(_ textField: UITextField,
+    public func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         
@@ -153,7 +153,7 @@ class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
         return true
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
         return true

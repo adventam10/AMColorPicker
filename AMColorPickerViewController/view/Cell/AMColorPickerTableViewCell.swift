@@ -1,6 +1,6 @@
 //
 //  AMColorPickerTableViewCell.swift
-//  TestProject
+//  AMColorPicker, https://github.com/adventam10/AMColorPicker
 //
 //  Created by am10 on 2018/01/03.
 //  Copyright © 2018年 am10. All rights reserved.
@@ -21,9 +21,9 @@ struct AMCPCellInfo {
 
 class AMColorPickerTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var blackView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak private var blackView: UIView!
+    @IBOutlet weak private var titleLabel: UILabel!
+    @IBOutlet weak private var colorView: UIView!
     var info:AMCPCellInfo? {
         
         didSet {

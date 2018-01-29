@@ -1,6 +1,6 @@
 //
 //  AMColorPickerSlider.swift
-//  TestProject
+//  AMColorPicker, https://github.com/adventam10/AMColorPicker
 //
 //  Created by am10 on 2018/01/03.
 //  Copyright © 2018年 am10. All rights reserved.

@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, AMColorPickerViewControllerDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,10 +22,14 @@ class ViewController: UIViewController {
 
     @IBAction func tappedButton(_ sender: Any) {
         
-        let vc = AMColorPickerViewController()
-        vc.selectedColor = UIColor.red
-        present(vc, animated: true, completion: nil)
+        let colorPickerViewController = AMColorPickerViewController()
+        colorPickerViewController.selectedColor = UIColor.red
+        colorPickerViewController.delegate = self
+        present(colorPickerViewController, animated: true, completion: nil)
     }
     
+    func colorPickerViewController(colorPickerViewController: AMColorPickerViewController, didSelect color: UIColor) {
+        
+    }
 }
 

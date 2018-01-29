@@ -1,6 +1,6 @@
 //
 //  AMColorPickerTableView.swift
-//  TestProject
+//  AMColorPicker, https://github.com/adventam10/AMColorPicker
 //
 //  Created by am10 on 2018/01/03.
 //  Copyright © 2018年 am10. All rights reserved.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol AMColorPickerTableViewDelegate: class {
+public protocol AMColorPickerTableViewDelegate: class {
     
     func colorPickerTableView(colorPickerTableView: AMColorPickerTableView, didSelect color: UIColor)
 }
 
-class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDataSource {
+public class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 
-    weak var delegate:AMColorPickerTableViewDelegate?
-    var selectedColor:UIColor = UIColor.white {
+    weak public var delegate:AMColorPickerTableViewDelegate?
+    public var selectedColor:UIColor = UIColor.white {
         
         didSet {
             
@@ -43,13 +43,13 @@ class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDataSource
                             AMCPCellInfo(title: "White", color: UIColor.white)]
     
     //MARK:Initialize
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         
         super.init(frame: frame)
         loadNib()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)!
         loadNib()
@@ -64,7 +64,7 @@ class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDataSource
         addSubview(view)
     }
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         
         super.awakeFromNib()
         
@@ -85,12 +85,12 @@ class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDataSource
     }
     
     //MARK:UITableView DataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return dataList.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AMColorPickerTableViewCell
         cell.info = dataList[indexPath.row]
@@ -98,7 +98,7 @@ class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDataSource
     }
     
     //MARK:UITableView Delegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         didSelect(color: dataList[indexPath.row].color)
     }
@@ -121,7 +121,7 @@ class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDataSource
     }
     
     //MARK:Reload
-    func reloadTable() {
+    public func reloadTable() {
         
         tableView.reloadData()
         tableView.setContentOffset(CGPoint.zero, animated: false)

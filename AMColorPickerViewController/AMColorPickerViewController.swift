@@ -1,6 +1,6 @@
 //
 //  AMColorPickerViewController.swift
-//  TestProject
+//  AMColorPicker, https://github.com/adventam10/AMColorPicker
 //
 //  Created by am10 on 2018/01/03.
 //  Copyright © 2018年 am10. All rights reserved.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol AMColorPickerViewControllerDelegate: class {
+public protocol AMColorPickerViewControllerDelegate: class {
     
     func colorPickerViewController(colorPickerViewController: AMColorPickerViewController, didSelect color: UIColor)
 }
 
-class AMColorPickerViewController: UIViewController, AMColorPickerTableViewDelegate, AMColorPickerRGBSliderViewDelegate, AMColorPickerWheelViewDelegate {
+public class AMColorPickerViewController: UIViewController, AMColorPickerTableViewDelegate, AMColorPickerRGBSliderViewDelegate, AMColorPickerWheelViewDelegate {
 
     enum SegmentIndex:Int {
         case picker = 0
@@ -21,15 +21,15 @@ class AMColorPickerViewController: UIViewController, AMColorPickerTableViewDeleg
         case slider = 2
     }
     
-    weak var delegate:AMColorPickerViewControllerDelegate?
-    var selectedColor:UIColor = UIColor.white
+    weak public var delegate:AMColorPickerViewControllerDelegate?
+    public var selectedColor:UIColor = UIColor.white
     
     @IBOutlet weak private var cpWheelView: AMColorPickerWheelView!
     @IBOutlet weak private var cpTableView: AMColorPickerTableView!
     @IBOutlet weak private var cpSliderView: AMColorPickerRGBSliderView!
     @IBOutlet weak private var segment: UISegmentedControl!
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         
         super.viewDidLoad()
 
@@ -43,7 +43,7 @@ class AMColorPickerViewController: UIViewController, AMColorPickerTableViewDeleg
         cpWheelView.selectedColor = selectedColor
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -81,7 +81,7 @@ class AMColorPickerViewController: UIViewController, AMColorPickerTableViewDeleg
     }
     
     //MARK: AMColorPickerRGBSliderView Delegate
-    func colorPickerRGBSliderView(colorPickerRGBSliderView: AMColorPickerRGBSliderView, didSelect color: UIColor) {
+    public func colorPickerRGBSliderView(colorPickerRGBSliderView: AMColorPickerRGBSliderView, didSelect color: UIColor) {
         
         cpTableView.selectedColor = color
         cpWheelView.selectedColor = color
@@ -92,7 +92,7 @@ class AMColorPickerViewController: UIViewController, AMColorPickerTableViewDeleg
     }
     
     //MARK: AMColorPickerTableView Delegate
-    func colorPickerTableView(colorPickerTableView: AMColorPickerTableView, didSelect color: UIColor) {
+    public func colorPickerTableView(colorPickerTableView: AMColorPickerTableView, didSelect color: UIColor) {
         
         cpSliderView.selectedColor = color
         cpWheelView.selectedColor = color
@@ -103,7 +103,7 @@ class AMColorPickerViewController: UIViewController, AMColorPickerTableViewDeleg
     }
     
     //MARK: AMColorPickerWheelView Delegate
-    func colorPickerWheelView(colorPickerWheelView: AMColorPickerWheelView, didSelect color: UIColor) {
+    public func colorPickerWheelView(colorPickerWheelView: AMColorPickerWheelView, didSelect color: UIColor) {
         
         cpTableView.selectedColor = color
         cpSliderView.selectedColor = color

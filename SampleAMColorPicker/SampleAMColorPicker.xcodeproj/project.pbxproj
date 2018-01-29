@@ -7,49 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E9A08FC2003848300DD65DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9A08FB2003848300DD65DB /* AppDelegate.swift */; };
-		0E9A08FE2003848300DD65DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9A08FD2003848300DD65DB /* ViewController.swift */; };
+		0E4753BA201F778D002EA382 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4753B8201F778D002EA382 /* AppDelegate.swift */; };
+		0E4753BB201F778D002EA382 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4753B9201F778D002EA382 /* ViewController.swift */; };
+		0E4753CF201F7798002EA382 /* AMColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4753BD201F7798002EA382 /* AMColorPickerViewController.swift */; };
+		0E4753D0201F7798002EA382 /* AMColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E4753BE201F7798002EA382 /* AMColorPickerViewController.xib */; };
+		0E4753D1201F7798002EA382 /* AMCP_color_wheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4753C0201F7798002EA382 /* AMCP_color_wheel@2x.png */; };
+		0E4753D2201F7798002EA382 /* AMCP_cursor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4753C1201F7798002EA382 /* AMCP_cursor@2x.png */; };
+		0E4753D3201F7798002EA382 /* AMCP_slider_thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4753C2201F7798002EA382 /* AMCP_slider_thumb@2x.png */; };
+		0E4753D4201F7798002EA382 /* AMColorPickerRGBSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4753C4201F7798002EA382 /* AMColorPickerRGBSliderView.swift */; };
+		0E4753D5201F7798002EA382 /* AMColorPickerRGBSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E4753C5201F7798002EA382 /* AMColorPickerRGBSliderView.xib */; };
+		0E4753D6201F7798002EA382 /* AMColorPickerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4753C6201F7798002EA382 /* AMColorPickerTableView.swift */; };
+		0E4753D7201F7798002EA382 /* AMColorPickerTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E4753C7201F7798002EA382 /* AMColorPickerTableView.xib */; };
+		0E4753D8201F7798002EA382 /* AMColorPickerWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4753C8201F7798002EA382 /* AMColorPickerWheelView.swift */; };
+		0E4753D9201F7798002EA382 /* AMColorPickerWheelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E4753C9201F7798002EA382 /* AMColorPickerWheelView.xib */; };
+		0E4753DA201F7798002EA382 /* AMColorPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4753CB201F7798002EA382 /* AMColorPickerTableViewCell.swift */; };
+		0E4753DB201F7798002EA382 /* AMColorPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E4753CC201F7798002EA382 /* AMColorPickerTableViewCell.xib */; };
+		0E4753DC201F7798002EA382 /* AMColorPickerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4753CE201F7798002EA382 /* AMColorPickerSlider.swift */; };
 		0E9A09012003848300DD65DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A08FF2003848300DD65DB /* Main.storyboard */; };
 		0E9A09032003848300DD65DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A09022003848300DD65DB /* Assets.xcassets */; };
 		0E9A09062003848300DD65DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A09042003848300DD65DB /* LaunchScreen.storyboard */; };
-		0E9A0920200384D700DD65DB /* AMColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9A090E200384D700DD65DB /* AMColorPickerViewController.swift */; };
-		0E9A0921200384D700DD65DB /* AMColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A090F200384D700DD65DB /* AMColorPickerViewController.xib */; };
-		0E9A0922200384D700DD65DB /* AMCP_color_wheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A0911200384D700DD65DB /* AMCP_color_wheel@2x.png */; };
-		0E9A0923200384D700DD65DB /* AMCP_cursor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A0912200384D700DD65DB /* AMCP_cursor@2x.png */; };
-		0E9A0924200384D700DD65DB /* AMCP_slider_thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A0913200384D700DD65DB /* AMCP_slider_thumb@2x.png */; };
-		0E9A0925200384D700DD65DB /* AMColorPickerRGBSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9A0915200384D700DD65DB /* AMColorPickerRGBSliderView.swift */; };
-		0E9A0926200384D700DD65DB /* AMColorPickerRGBSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A0916200384D700DD65DB /* AMColorPickerRGBSliderView.xib */; };
-		0E9A0927200384D700DD65DB /* AMColorPickerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9A0917200384D700DD65DB /* AMColorPickerTableView.swift */; };
-		0E9A0928200384D700DD65DB /* AMColorPickerTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A0918200384D700DD65DB /* AMColorPickerTableView.xib */; };
-		0E9A0929200384D700DD65DB /* AMColorPickerWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9A0919200384D700DD65DB /* AMColorPickerWheelView.swift */; };
-		0E9A092A200384D700DD65DB /* AMColorPickerWheelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A091A200384D700DD65DB /* AMColorPickerWheelView.xib */; };
-		0E9A092B200384D700DD65DB /* AMColorPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9A091C200384D700DD65DB /* AMColorPickerTableViewCell.swift */; };
-		0E9A092C200384D700DD65DB /* AMColorPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A091D200384D700DD65DB /* AMColorPickerTableViewCell.xib */; };
-		0E9A092D200384D700DD65DB /* AMColorPickerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9A091F200384D700DD65DB /* AMColorPickerSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E4753B8201F778D002EA382 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0E4753B9201F778D002EA382 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0E4753BD201F7798002EA382 /* AMColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerViewController.swift; sourceTree = "<group>"; };
+		0E4753BE201F7798002EA382 /* AMColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMColorPickerViewController.xib; sourceTree = "<group>"; };
+		0E4753C0201F7798002EA382 /* AMCP_color_wheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMCP_color_wheel@2x.png"; sourceTree = "<group>"; };
+		0E4753C1201F7798002EA382 /* AMCP_cursor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMCP_cursor@2x.png"; sourceTree = "<group>"; };
+		0E4753C2201F7798002EA382 /* AMCP_slider_thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMCP_slider_thumb@2x.png"; sourceTree = "<group>"; };
+		0E4753C4201F7798002EA382 /* AMColorPickerRGBSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerRGBSliderView.swift; sourceTree = "<group>"; };
+		0E4753C5201F7798002EA382 /* AMColorPickerRGBSliderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMColorPickerRGBSliderView.xib; sourceTree = "<group>"; };
+		0E4753C6201F7798002EA382 /* AMColorPickerTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerTableView.swift; sourceTree = "<group>"; };
+		0E4753C7201F7798002EA382 /* AMColorPickerTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMColorPickerTableView.xib; sourceTree = "<group>"; };
+		0E4753C8201F7798002EA382 /* AMColorPickerWheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerWheelView.swift; sourceTree = "<group>"; };
+		0E4753C9201F7798002EA382 /* AMColorPickerWheelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMColorPickerWheelView.xib; sourceTree = "<group>"; };
+		0E4753CB201F7798002EA382 /* AMColorPickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerTableViewCell.swift; sourceTree = "<group>"; };
+		0E4753CC201F7798002EA382 /* AMColorPickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMColorPickerTableViewCell.xib; sourceTree = "<group>"; };
+		0E4753CE201F7798002EA382 /* AMColorPickerSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerSlider.swift; sourceTree = "<group>"; };
 		0E9A08F82003848300DD65DB /* SampleAMColorPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleAMColorPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0E9A08FB2003848300DD65DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0E9A08FD2003848300DD65DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0E9A09002003848300DD65DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0E9A09022003848300DD65DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E9A09052003848300DD65DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E9A09072003848300DD65DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0E9A090E200384D700DD65DB /* AMColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerViewController.swift; sourceTree = "<group>"; };
-		0E9A090F200384D700DD65DB /* AMColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMColorPickerViewController.xib; sourceTree = "<group>"; };
-		0E9A0911200384D700DD65DB /* AMCP_color_wheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMCP_color_wheel@2x.png"; sourceTree = "<group>"; };
-		0E9A0912200384D700DD65DB /* AMCP_cursor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMCP_cursor@2x.png"; sourceTree = "<group>"; };
-		0E9A0913200384D700DD65DB /* AMCP_slider_thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AMCP_slider_thumb@2x.png"; sourceTree = "<group>"; };
-		0E9A0915200384D700DD65DB /* AMColorPickerRGBSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerRGBSliderView.swift; sourceTree = "<group>"; };
-		0E9A0916200384D700DD65DB /* AMColorPickerRGBSliderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMColorPickerRGBSliderView.xib; sourceTree = "<group>"; };
-		0E9A0917200384D700DD65DB /* AMColorPickerTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerTableView.swift; sourceTree = "<group>"; };
-		0E9A0918200384D700DD65DB /* AMColorPickerTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMColorPickerTableView.xib; sourceTree = "<group>"; };
-		0E9A0919200384D700DD65DB /* AMColorPickerWheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerWheelView.swift; sourceTree = "<group>"; };
-		0E9A091A200384D700DD65DB /* AMColorPickerWheelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMColorPickerWheelView.xib; sourceTree = "<group>"; };
-		0E9A091C200384D700DD65DB /* AMColorPickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerTableViewCell.swift; sourceTree = "<group>"; };
-		0E9A091D200384D700DD65DB /* AMColorPickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMColorPickerTableViewCell.xib; sourceTree = "<group>"; };
-		0E9A091F200384D700DD65DB /* AMColorPickerSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +63,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E4753B7201F778D002EA382 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0E4753BC201F7798002EA382 /* AMColorPickerViewController */,
+				0E4753B8201F778D002EA382 /* AppDelegate.swift */,
+				0E4753B9201F778D002EA382 /* ViewController.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		0E4753BC201F7798002EA382 /* AMColorPickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0E4753BD201F7798002EA382 /* AMColorPickerViewController.swift */,
+				0E4753BE201F7798002EA382 /* AMColorPickerViewController.xib */,
+				0E4753BF201F7798002EA382 /* image */,
+				0E4753C3201F7798002EA382 /* view */,
+			);
+			name = AMColorPickerViewController;
+			path = ../../../AMColorPickerViewController;
+			sourceTree = "<group>";
+		};
+		0E4753BF201F7798002EA382 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				0E4753C0201F7798002EA382 /* AMCP_color_wheel@2x.png */,
+				0E4753C1201F7798002EA382 /* AMCP_cursor@2x.png */,
+				0E4753C2201F7798002EA382 /* AMCP_slider_thumb@2x.png */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		0E4753C3201F7798002EA382 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0E4753C4201F7798002EA382 /* AMColorPickerRGBSliderView.swift */,
+				0E4753C5201F7798002EA382 /* AMColorPickerRGBSliderView.xib */,
+				0E4753C6201F7798002EA382 /* AMColorPickerTableView.swift */,
+				0E4753C7201F7798002EA382 /* AMColorPickerTableView.xib */,
+				0E4753C8201F7798002EA382 /* AMColorPickerWheelView.swift */,
+				0E4753C9201F7798002EA382 /* AMColorPickerWheelView.xib */,
+				0E4753CA201F7798002EA382 /* Cell */,
+				0E4753CD201F7798002EA382 /* Slider */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0E4753CA201F7798002EA382 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0E4753CB201F7798002EA382 /* AMColorPickerTableViewCell.swift */,
+				0E4753CC201F7798002EA382 /* AMColorPickerTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0E4753CD201F7798002EA382 /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				0E4753CE201F7798002EA382 /* AMColorPickerSlider.swift */,
+			);
+			path = Slider;
+			sourceTree = "<group>";
+		};
 		0E9A08EF2003848300DD65DB = {
 			isa = PBXGroup;
 			children = (
@@ -82,68 +146,13 @@
 		0E9A08FA2003848300DD65DB /* SampleAMColorPicker */ = {
 			isa = PBXGroup;
 			children = (
-				0E9A090D200384D700DD65DB /* AMColorPicker */,
-				0E9A08FB2003848300DD65DB /* AppDelegate.swift */,
-				0E9A08FD2003848300DD65DB /* ViewController.swift */,
+				0E4753B7201F778D002EA382 /* Classes */,
 				0E9A08FF2003848300DD65DB /* Main.storyboard */,
 				0E9A09022003848300DD65DB /* Assets.xcassets */,
 				0E9A09042003848300DD65DB /* LaunchScreen.storyboard */,
 				0E9A09072003848300DD65DB /* Info.plist */,
 			);
 			path = SampleAMColorPicker;
-			sourceTree = "<group>";
-		};
-		0E9A090D200384D700DD65DB /* AMColorPicker */ = {
-			isa = PBXGroup;
-			children = (
-				0E9A090E200384D700DD65DB /* AMColorPickerViewController.swift */,
-				0E9A090F200384D700DD65DB /* AMColorPickerViewController.xib */,
-				0E9A0910200384D700DD65DB /* image */,
-				0E9A0914200384D700DD65DB /* view */,
-			);
-			path = AMColorPicker;
-			sourceTree = "<group>";
-		};
-		0E9A0910200384D700DD65DB /* image */ = {
-			isa = PBXGroup;
-			children = (
-				0E9A0911200384D700DD65DB /* AMCP_color_wheel@2x.png */,
-				0E9A0912200384D700DD65DB /* AMCP_cursor@2x.png */,
-				0E9A0913200384D700DD65DB /* AMCP_slider_thumb@2x.png */,
-			);
-			path = image;
-			sourceTree = "<group>";
-		};
-		0E9A0914200384D700DD65DB /* view */ = {
-			isa = PBXGroup;
-			children = (
-				0E9A0915200384D700DD65DB /* AMColorPickerRGBSliderView.swift */,
-				0E9A0916200384D700DD65DB /* AMColorPickerRGBSliderView.xib */,
-				0E9A0917200384D700DD65DB /* AMColorPickerTableView.swift */,
-				0E9A0918200384D700DD65DB /* AMColorPickerTableView.xib */,
-				0E9A0919200384D700DD65DB /* AMColorPickerWheelView.swift */,
-				0E9A091A200384D700DD65DB /* AMColorPickerWheelView.xib */,
-				0E9A091B200384D700DD65DB /* Cell */,
-				0E9A091E200384D700DD65DB /* Slider */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		0E9A091B200384D700DD65DB /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				0E9A091C200384D700DD65DB /* AMColorPickerTableViewCell.swift */,
-				0E9A091D200384D700DD65DB /* AMColorPickerTableViewCell.xib */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		0E9A091E200384D700DD65DB /* Slider */ = {
-			isa = PBXGroup;
-			children = (
-				0E9A091F200384D700DD65DB /* AMColorPickerSlider.swift */,
-			);
-			path = Slider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,15 +215,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E9A09062003848300DD65DB /* LaunchScreen.storyboard in Resources */,
-				0E9A0923200384D700DD65DB /* AMCP_cursor@2x.png in Resources */,
+				0E4753D2201F7798002EA382 /* AMCP_cursor@2x.png in Resources */,
 				0E9A09032003848300DD65DB /* Assets.xcassets in Resources */,
-				0E9A0926200384D700DD65DB /* AMColorPickerRGBSliderView.xib in Resources */,
-				0E9A0928200384D700DD65DB /* AMColorPickerTableView.xib in Resources */,
-				0E9A0921200384D700DD65DB /* AMColorPickerViewController.xib in Resources */,
-				0E9A092A200384D700DD65DB /* AMColorPickerWheelView.xib in Resources */,
-				0E9A092C200384D700DD65DB /* AMColorPickerTableViewCell.xib in Resources */,
-				0E9A0924200384D700DD65DB /* AMCP_slider_thumb@2x.png in Resources */,
-				0E9A0922200384D700DD65DB /* AMCP_color_wheel@2x.png in Resources */,
+				0E4753D5201F7798002EA382 /* AMColorPickerRGBSliderView.xib in Resources */,
+				0E4753D7201F7798002EA382 /* AMColorPickerTableView.xib in Resources */,
+				0E4753D0201F7798002EA382 /* AMColorPickerViewController.xib in Resources */,
+				0E4753D9201F7798002EA382 /* AMColorPickerWheelView.xib in Resources */,
+				0E4753DB201F7798002EA382 /* AMColorPickerTableViewCell.xib in Resources */,
+				0E4753D3201F7798002EA382 /* AMCP_slider_thumb@2x.png in Resources */,
+				0E4753D1201F7798002EA382 /* AMCP_color_wheel@2x.png in Resources */,
 				0E9A09012003848300DD65DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,14 +235,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E9A08FE2003848300DD65DB /* ViewController.swift in Sources */,
-				0E9A08FC2003848300DD65DB /* AppDelegate.swift in Sources */,
-				0E9A092D200384D700DD65DB /* AMColorPickerSlider.swift in Sources */,
-				0E9A0927200384D700DD65DB /* AMColorPickerTableView.swift in Sources */,
-				0E9A0925200384D700DD65DB /* AMColorPickerRGBSliderView.swift in Sources */,
-				0E9A0929200384D700DD65DB /* AMColorPickerWheelView.swift in Sources */,
-				0E9A0920200384D700DD65DB /* AMColorPickerViewController.swift in Sources */,
-				0E9A092B200384D700DD65DB /* AMColorPickerTableViewCell.swift in Sources */,
+				0E4753BB201F778D002EA382 /* ViewController.swift in Sources */,
+				0E4753BA201F778D002EA382 /* AppDelegate.swift in Sources */,
+				0E4753DC201F7798002EA382 /* AMColorPickerSlider.swift in Sources */,
+				0E4753D6201F7798002EA382 /* AMColorPickerTableView.swift in Sources */,
+				0E4753D4201F7798002EA382 /* AMColorPickerRGBSliderView.swift in Sources */,
+				0E4753D8201F7798002EA382 /* AMColorPickerWheelView.swift in Sources */,
+				0E4753CF201F7798002EA382 /* AMColorPickerViewController.swift in Sources */,
+				0E4753DA201F7798002EA382 /* AMColorPickerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -358,7 +367,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
