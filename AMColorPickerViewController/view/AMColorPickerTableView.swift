@@ -63,16 +63,10 @@ public class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDat
         view.translatesAutoresizingMaskIntoConstraints = true
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
-    }
-    
-    override public func awakeFromNib() {
-        
-        super.awakeFromNib()
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        let bundle = Bundle(for: AMColorPickerTableViewCell.self)
         let nib = UINib(nibName: "AMColorPickerTableViewCell", bundle: bundle)
         tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
         

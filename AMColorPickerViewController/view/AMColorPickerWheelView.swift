@@ -71,11 +71,7 @@ public class AMColorPickerWheelView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = true
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
-    }
-    
-    override public func awakeFromNib() {
         
-        super.awakeFromNib()
         colorPickerImageView.isUserInteractionEnabled = true
         let pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(gesture:)))
         colorPickerImageView.addGestureRecognizer(pan)

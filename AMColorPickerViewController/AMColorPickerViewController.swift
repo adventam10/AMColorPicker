@@ -29,6 +29,20 @@ public class AMColorPickerViewController: UIViewController, AMColorPickerTableVi
     @IBOutlet weak private var cpSliderView: AMColorPickerRGBSliderView!
     @IBOutlet weak private var segment: UISegmentedControl!
     
+    required public init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
+        
+        let bundle = Bundle(for: AMColorPickerViewController.self)
+        super.init(nibName: "AMColorPickerViewController", bundle: bundle)
+    }
+    
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+    }
+    
     override public func viewDidLoad() {
         
         super.viewDidLoad()

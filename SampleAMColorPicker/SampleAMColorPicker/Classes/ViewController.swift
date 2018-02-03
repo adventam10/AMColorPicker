@@ -13,6 +13,7 @@ class ViewController: UIViewController, AMColorPickerViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,13 +24,14 @@ class ViewController: UIViewController, AMColorPickerViewControllerDelegate {
     @IBAction func tappedButton(_ sender: Any) {
         
         let colorPickerViewController = AMColorPickerViewController()
-        colorPickerViewController.selectedColor = UIColor.red
+        colorPickerViewController.selectedColor = view.backgroundColor!
         colorPickerViewController.delegate = self
         present(colorPickerViewController, animated: true, completion: nil)
     }
     
     func colorPickerViewController(colorPickerViewController: AMColorPickerViewController, didSelect color: UIColor) {
         
+        view.backgroundColor = color
     }
 }
 
