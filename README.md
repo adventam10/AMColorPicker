@@ -29,6 +29,14 @@ present(colorPickerViewController, animated: true, completion: nil)
 
 ## Installation
 
+### CocoaPods
+
+Add this to your Podfile.
+
+```ogdl
+pod 'AMColorPicker'
+```
+
 ### Carthage
 
 Add this to your Cartfile.
