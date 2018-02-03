@@ -57,7 +57,8 @@ public class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDat
     
     private func loadNib() {
         
-        let view = Bundle.main.loadNibNamed("AMColorPickerTableView", owner: self, options: nil)?.first as! UIView
+        let bundle = Bundle(for: AMColorPickerTableView.self)
+        let view = bundle.loadNibNamed("AMColorPickerTableView", owner: self, options: nil)?.first as! UIView
         view.frame = bounds
         view.translatesAutoresizingMaskIntoConstraints = true
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -71,7 +72,8 @@ public class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         
-        let nib = UINib(nibName: "AMColorPickerTableViewCell", bundle: nil)
+        let bundle = Bundle(for: AMColorPickerTableViewCell.self)
+        let nib = UINib(nibName: "AMColorPickerTableViewCell", bundle: bundle)
         tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
         
         tableView.tableFooterView = UIView()
