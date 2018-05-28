@@ -151,9 +151,12 @@ public class AMColorPickerWheelView: UIView {
         let center = colorPickerImageView.center
         let radius = colorPickerImageView.frame.width/2
         // 座標の差を求める 画面の上側をY座標＋とするので、Y座標は符号を入れ替える
+        // Since the upper side of the screen for obtaining the coordinate difference
+        // is set as the Y coordinate +, the sign of Y coordinate is replaced
         let x = point.x - center.x
         let y = -(point.y - center.y)
         // 角度radianを求める
+        // Find the radien angle
         var radian = atan2f(Float(y), Float(x))
         if radian < 0 {
             
