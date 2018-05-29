@@ -21,7 +21,7 @@ public class AMColorPickerWheelView: UIView {
         didSet {
             
             colorView.backgroundColor = selectedColor
-            let point = caluculatePoint(color: selectedColor)
+            let point = calculatePoint(color: selectedColor)
             cursorImageView.center = point
             
             var hue:CGFloat = 0
@@ -82,7 +82,7 @@ public class AMColorPickerWheelView: UIView {
     
     override public func draw(_ rect: CGRect) {
         
-        let point = caluculatePoint(color: selectedColor)
+        let point = calculatePoint(color: selectedColor)
         cursorImageView.center = point
     }
     
@@ -94,7 +94,7 @@ public class AMColorPickerWheelView: UIView {
         if path.contains(point) {
             
             cursorImageView.center = point
-            didSelect(color: caluculateColor(point: point))
+            didSelect(color: calculateColor(point: point))
         }
     }
     
@@ -105,7 +105,7 @@ public class AMColorPickerWheelView: UIView {
         if path.contains(point) {
             
             cursorImageView.center = point
-            didSelect(color: caluculateColor(point: point))
+            didSelect(color: calculateColor(point: point))
         }
     }
     
@@ -113,13 +113,13 @@ public class AMColorPickerWheelView: UIView {
     @IBAction private func changedBrightnessSlider(_ slider: UISlider) {
         
         brightnessLabel.text = NSString(format: "%.0f", slider.value) as String
-        didSelect(color: caluculateColor(point: cursorImageView.center))
+        didSelect(color: calculateColor(point: cursorImageView.center))
     }
     
     @IBAction private func changedOpacitySlider(_ slider: UISlider) {
         
         opacityLabel.text = NSString(format: "%.0f", slider.value) as String
-        didSelect(color: caluculateColor(point: cursorImageView.center))
+        didSelect(color: calculateColor(point: cursorImageView.center))
     }
     
     //MARK:SetColor
@@ -146,7 +146,7 @@ public class AMColorPickerWheelView: UIView {
     }
     
     //MARK:Calculate
-    private func caluculateColor(point: CGPoint) -> UIColor {
+    private func calculateColor(point: CGPoint) -> UIColor {
         
         let center = colorPickerImageView.center
         let radius = colorPickerImageView.frame.width/2
@@ -174,7 +174,7 @@ public class AMColorPickerWheelView: UIView {
                        alpha: alpha)
     }
     
-    private func caluculatePoint(color: UIColor) -> CGPoint {
+    private func calculatePoint(color: UIColor) -> CGPoint {
         
         var hue:CGFloat = 0
         var saturation:CGFloat = 0
