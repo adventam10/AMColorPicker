@@ -93,7 +93,6 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     //MARK:UITextField Action
     @objc func didChange(textField: UITextField) {
         
-        // 入力されている文字を取得
         // Retrieve the inputted characters
         guard let newText = textField.text else {
             
@@ -140,12 +139,10 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         
-        // 入力テキストを取得
         // Get the inputted text
         let currentText = textField.text ?? ""
         let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
         
-        // 文字数判定
         // Determine the number of characters
         let maxInputLength = 6
         if prospectiveText.count > maxInputLength {
