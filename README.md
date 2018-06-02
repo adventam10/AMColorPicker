@@ -20,6 +20,22 @@
 
 ## Usage
 
+Adopt the AMColorPickerViewControllerDelegate protocol in the class declaration.
+
+```swift
+class ViewController: UIViewController, AMColorPickerViewControllerDelegate
+``` 
+
+Conform to the protocol in the class implementation.
+
+```swift
+func colorPickerViewController(colorPickerViewController: AMColorPickerViewController, didSelect color: UIColor) {    
+    // use selected color here
+}
+```
+
+Create and present the AMColorPicker as you see fit.
+
 ```swift
 let colorPickerViewController = AMColorPickerViewController()
 colorPickerViewController.selectedColor = UIColor.red
