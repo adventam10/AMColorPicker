@@ -89,7 +89,7 @@ public class AMColorPickerWheelView: UIView {
     //MARK:Gesture Action
     @objc func panAction(gesture: UIPanGestureRecognizer) {
         
-        let point = gesture.location(in: self)
+        let point = gesture.location(in: colorPickerImageView.superview)
         let path = UIBezierPath(ovalIn: colorPickerImageView.frame)
         if path.contains(point) {
             
@@ -100,7 +100,7 @@ public class AMColorPickerWheelView: UIView {
     
     @objc func tapAction(gesture: UITapGestureRecognizer) {
         
-        let point = gesture.location(in: self)
+        let point = gesture.location(in: colorPickerImageView.superview)
         let path = UIBezierPath(ovalIn: colorPickerImageView.frame)
         if path.contains(point) {
             
