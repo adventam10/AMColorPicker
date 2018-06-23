@@ -1,4 +1,4 @@
-# AMColorPicker
+![AMColorPicker](https://github.com/Tobaloidee/AMColorPicker/blob/master/logo/logotype-a.png)
 
 `AMColorPicker`  can select color by three ways.
 
