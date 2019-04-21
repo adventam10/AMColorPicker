@@ -22,6 +22,7 @@
 		0E475410201F77F7002EA382 /* AMColorPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E475401201F77F7002EA382 /* AMColorPickerTableViewCell.swift */; };
 		0E475411201F77F7002EA382 /* AMColorPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E475402201F77F7002EA382 /* AMColorPickerTableViewCell.xib */; };
 		0E475412201F77F7002EA382 /* AMColorPickerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E475404201F77F7002EA382 /* AMColorPickerSlider.swift */; };
+		0E682283226C775700B72A0A /* AMColorPickerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E682282226C775700B72A0A /* AMColorPickerProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		0E475401201F77F7002EA382 /* AMColorPickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerTableViewCell.swift; sourceTree = "<group>"; };
 		0E475402201F77F7002EA382 /* AMColorPickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMColorPickerTableViewCell.xib; sourceTree = "<group>"; };
 		0E475404201F77F7002EA382 /* AMColorPickerSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerSlider.swift; sourceTree = "<group>"; };
+		0E682282226C775700B72A0A /* AMColorPickerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMColorPickerProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		0E4753F2201F77F7002EA382 /* AMColorPickerViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0E682282226C775700B72A0A /* AMColorPickerProtocol.swift */,
 				0E4753F3201F77F7002EA382 /* AMColorPickerViewController.swift */,
 				0E4753F4201F77F7002EA382 /* AMColorPickerViewController.xib */,
 				0E4753F5201F77F7002EA382 /* image */,
@@ -228,6 +231,7 @@
 				0E47540E201F77F7002EA382 /* AMColorPickerWheelView.swift in Sources */,
 				0E475410201F77F7002EA382 /* AMColorPickerTableViewCell.swift in Sources */,
 				0E475412201F77F7002EA382 /* AMColorPickerSlider.swift in Sources */,
+				0E682283226C775700B72A0A /* AMColorPickerProtocol.swift in Sources */,
 				0E475405201F77F7002EA382 /* AMColorPickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

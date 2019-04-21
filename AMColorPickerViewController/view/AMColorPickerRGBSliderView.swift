@@ -8,13 +8,9 @@
 
 import UIKit
 
-public protocol AMColorPickerRGBSliderViewDelegate: class {
-    func colorPickerRGBSliderView(_ colorPickerRGBSliderView: AMColorPickerRGBSliderView, didSelect color: UIColor)
-}
+public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
 
-public class AMColorPickerRGBSliderView: UIView {
-
-    weak public var delegate:AMColorPickerRGBSliderViewDelegate?
+    weak public var delegate:AMColorPickerDelegate?
     public var selectedColor:UIColor = UIColor.white {
         didSet {
             colorView.backgroundColor = selectedColor
@@ -193,7 +189,7 @@ public class AMColorPickerRGBSliderView: UIView {
     private func didSelect(color: UIColor) {
         colorView.backgroundColor = color
         setSliderColor(color: color)
-        delegate?.colorPickerRGBSliderView(self, didSelect: color)
+        delegate?.colorPicker(self, didSelect: color)
     }
     
     private func setSliderColor(color: UIColor) {

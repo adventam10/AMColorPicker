@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tappedButton(_ sender: Any) {
-        
         let colorPickerViewController = AMColorPickerViewController()
         colorPickerViewController.selectedColor = view.backgroundColor!
         colorPickerViewController.delegate = self
@@ -30,9 +29,8 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: AMColorPickerViewControllerDelegate {
-    func colorPickerViewController(_ colorPickerViewController: AMColorPickerViewController, didSelect color: UIColor) {
+extension ViewController: AMColorPickerDelegate {
+    func colorPicker(_ colorPicker: AMColorPicker, didSelect color: UIColor) {
         view.backgroundColor = color
     }
 }
-

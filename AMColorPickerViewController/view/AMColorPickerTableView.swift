@@ -8,13 +8,9 @@
 
 import UIKit
 
-public protocol AMColorPickerTableViewDelegate: class {
-    func colorPickerTableView(_ colorPickerTableView: AMColorPickerTableView, didSelect color: UIColor)
-}
+public class AMColorPickerTableView: UIView, AMColorPicker {
 
-public class AMColorPickerTableView: UIView {
-
-    weak public var delegate:AMColorPickerTableViewDelegate?
+    weak public var delegate:AMColorPickerDelegate?
     public var selectedColor:UIColor = UIColor.white {
         didSet {
             colorView.backgroundColor = selectedColor
@@ -82,7 +78,7 @@ public class AMColorPickerTableView: UIView {
         color.getRed(&red, green: &green, blue: &blue, alpha: nil)
         let selectColor = UIColor(red: red, green: green, blue: blue, alpha: CGFloat(alpha))
         colorView.backgroundColor = selectColor
-        delegate?.colorPickerTableView(self, didSelect: selectColor)
+        delegate?.colorPicker(self, didSelect: selectColor)
     }
     
     //MARK:Reload
