@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol AMColorPickerWheelViewDelegate: class {
-    func colorPickerWheelView(colorPickerWheelView: AMColorPickerWheelView, didSelect color: UIColor)
+    func colorPickerWheelView(_ colorPickerWheelView: AMColorPickerWheelView, didSelect color: UIColor)
 }
 
 public class AMColorPickerWheelView: UIView {
@@ -123,7 +123,7 @@ public class AMColorPickerWheelView: UIView {
     private func didSelect(color: UIColor) {
         setSliderColor(color: color)
         colorView.backgroundColor = color
-        delegate?.colorPickerWheelView(colorPickerWheelView: self, didSelect: color)
+        delegate?.colorPickerWheelView(self, didSelect: color)
     }
     
     //MARK:Calculate

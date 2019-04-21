@@ -9,10 +9,10 @@
 import UIKit
 
 public protocol AMColorPickerRGBSliderViewDelegate: class {
-    func colorPickerRGBSliderView(colorPickerRGBSliderView: AMColorPickerRGBSliderView, didSelect color: UIColor)
+    func colorPickerRGBSliderView(_ colorPickerRGBSliderView: AMColorPickerRGBSliderView, didSelect color: UIColor)
 }
 
-public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
+public class AMColorPickerRGBSliderView: UIView {
 
     weak public var delegate:AMColorPickerRGBSliderViewDelegate?
     public var selectedColor:UIColor = UIColor.white {
@@ -123,29 +123,6 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
         didSelect(color: color)
     }
     
-    //MARK:UITextField Delegate
-    public func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
-        // Get the inputted text
-        let currentText = textField.text ?? ""
-        let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
-        
-        // Determine the number of characters
-        let maxInputLength = 6
-        if prospectiveText.count > maxInputLength {
-            return false
-        }
-        
-        previousText = currentText
-        return true
-    }
-    
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
     //MARK:IBAction
     @IBAction private func changedRedSlider(_ slider: UISlider) {
         redLabel.text = NSString(format: "%.0f", slider.value) as String
@@ -216,7 +193,7 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     private func didSelect(color: UIColor) {
         colorView.backgroundColor = color
         setSliderColor(color: color)
-        delegate?.colorPickerRGBSliderView(colorPickerRGBSliderView: self, didSelect: color)
+        delegate?.colorPickerRGBSliderView(self, didSelect: color)
     }
     
     private func setSliderColor(color: UIColor) {
@@ -236,5 +213,29 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     //MARK:Close
     func closeKeyboard() {
         hexTextField.resignFirstResponder()
+    }
+}
+
+extension AMColorPickerRGBSliderView: UITextFieldDelegate {
+    public func textField(_ textField: UITextField,
+                          shouldChangeCharactersIn range: NSRange,
+                          replacementString string: String) -> Bool {
+        // Get the inputted text
+        let currentText = textField.text ?? ""
+        let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        
+        // Determine the number of characters
+        let maxInputLength = 6
+        if prospectiveText.count > maxInputLength {
+            return false
+        }
+        
+        previousText = currentText
+        return true
+    }
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

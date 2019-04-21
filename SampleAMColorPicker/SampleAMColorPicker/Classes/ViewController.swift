@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, AMColorPickerViewControllerDelegate {
+class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +28,10 @@ class ViewController: UIViewController, AMColorPickerViewControllerDelegate {
         colorPickerViewController.delegate = self
         present(colorPickerViewController, animated: true, completion: nil)
     }
-    
-    func colorPickerViewController(colorPickerViewController: AMColorPickerViewController, didSelect color: UIColor) {
-        
+}
+
+extension ViewController: AMColorPickerViewControllerDelegate {
+    func colorPickerViewController(_ colorPickerViewController: AMColorPickerViewController, didSelect color: UIColor) {
         view.backgroundColor = color
     }
 }

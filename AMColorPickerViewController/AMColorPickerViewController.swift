@@ -9,10 +9,10 @@
 import UIKit
 
 public protocol AMColorPickerViewControllerDelegate: class {
-    func colorPickerViewController(colorPickerViewController: AMColorPickerViewController, didSelect color: UIColor)
+    func colorPickerViewController(_ colorPickerViewController: AMColorPickerViewController, didSelect color: UIColor)
 }
 
-public class AMColorPickerViewController: UIViewController, AMColorPickerTableViewDelegate, AMColorPickerRGBSliderViewDelegate, AMColorPickerWheelViewDelegate {
+public class AMColorPickerViewController: UIViewController {
 
     enum SegmentIndex:Int {
         case picker = 0
@@ -85,25 +85,28 @@ public class AMColorPickerViewController: UIViewController, AMColorPickerTableVi
     @IBAction private func tappedCloseButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
-    //MARK: AMColorPickerRGBSliderView Delegate
-    public func colorPickerRGBSliderView(colorPickerRGBSliderView: AMColorPickerRGBSliderView, didSelect color: UIColor) {
-        cpTableView.selectedColor = color
-        cpWheelView.selectedColor = color
-        delegate?.colorPickerViewController(colorPickerViewController: self, didSelect: color)
-    }
-    
-    //MARK: AMColorPickerTableView Delegate
-    public func colorPickerTableView(colorPickerTableView: AMColorPickerTableView, didSelect color: UIColor) {
+}
+
+extension AMColorPickerViewController: AMColorPickerTableViewDelegate {
+    public func colorPickerTableView(_ colorPickerTableView: AMColorPickerTableView, didSelect color: UIColor) {
         cpSliderView.selectedColor = color
         cpWheelView.selectedColor = color
-        delegate?.colorPickerViewController(colorPickerViewController: self, didSelect: color)
+        delegate?.colorPickerViewController(self, didSelect: color)
     }
-    
-    //MARK: AMColorPickerWheelView Delegate
-    public func colorPickerWheelView(colorPickerWheelView: AMColorPickerWheelView, didSelect color: UIColor) {
+}
+
+extension AMColorPickerViewController: AMColorPickerRGBSliderViewDelegate {
+    public func colorPickerRGBSliderView(_ colorPickerRGBSliderView: AMColorPickerRGBSliderView, didSelect color: UIColor) {
+        cpTableView.selectedColor = color
+        cpWheelView.selectedColor = color
+        delegate?.colorPickerViewController(self, didSelect: color)
+    }
+}
+
+extension AMColorPickerViewController: AMColorPickerWheelViewDelegate {
+    public func colorPickerWheelView(_ colorPickerWheelView: AMColorPickerWheelView, didSelect color: UIColor) {
         cpTableView.selectedColor = color
         cpSliderView.selectedColor = color
-        delegate?.colorPickerViewController(colorPickerViewController: self, didSelect: color)
+        delegate?.colorPickerViewController(self, didSelect: color)
     }
 }
