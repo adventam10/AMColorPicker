@@ -20,16 +20,16 @@
 
 ## Usage
 
-Adopt the AMColorPickerViewControllerDelegate protocol in the class declaration.
+Adopt the AMColorPickerDelegate protocol in the class declaration.
 
 ```swift
-class ViewController: UIViewController, AMColorPickerViewControllerDelegate
+class ViewController: UIViewController, AMColorPickerDelegate
 ``` 
 
 Conform to the protocol in the class implementation.
 
 ```swift
-func colorPickerViewController(colorPickerViewController: AMColorPickerViewController, didSelect color: UIColor) {    
+func colorPicker(_ colorPicker: AMColorPicker, didSelect color: UIColor) {    
     // use selected color here
 }
 ```
