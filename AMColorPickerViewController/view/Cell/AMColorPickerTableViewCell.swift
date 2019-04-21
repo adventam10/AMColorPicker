@@ -25,11 +25,8 @@ class AMColorPickerTableViewCell: UITableViewCell {
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var colorView: UIView!
     var info:AMCPCellInfo? {
-        
         didSet {
-            
             guard let cellInfo = info else {
-                
                 return
             }
             
@@ -39,35 +36,27 @@ class AMColorPickerTableViewCell: UITableViewCell {
     }
     
     override func awakeFromNib() {
-        
         super.awakeFromNib()
         // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
         if selected {
-            
             blackView.backgroundColor = UIColor.black
             if let info = info {
-
                 colorView.backgroundColor = info.color
             }
         }
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        
         super.setHighlighted(highlighted, animated: animated)
-        
         if highlighted {
-            
             blackView.backgroundColor = UIColor.black
             if let info = info {
-                
                 colorView.backgroundColor = info.color
             }
         }

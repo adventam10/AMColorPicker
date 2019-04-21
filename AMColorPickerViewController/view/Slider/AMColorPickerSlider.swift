@@ -15,9 +15,7 @@ class AMColorPickerSlider: UISlider {
     @IBInspectable var sliderColor:UIColor = UIColor.clear
     
     override var bounds: CGRect {
-        
         didSet {
-            
             drawSlider()
         }
     }
@@ -25,30 +23,25 @@ class AMColorPickerSlider: UISlider {
     private let sliderLayer = CAGradientLayer()
     
     required init?(coder aDecoder: NSCoder) {
-        
         super.init(coder:aDecoder)
         initView()
     }
     
     private func initView() {
-        
         self.maximumTrackTintColor = UIColor.clear
         self.minimumTrackTintColor = UIColor.clear
         
         let bundle = Bundle(for: AMColorPickerSlider.self)
         if let imagePath = bundle.path(forResource: "AMCP_slider_thumb@2x", ofType: "png") {
-            
             setThumbImage(UIImage(contentsOfFile: imagePath), for: .normal)
         }
     }
     
     override func draw(_ rect: CGRect) {
-        
         drawSlider()
     }
     
     private func drawSlider() {
-        
         sliderLayer.removeFromSuperlayer()
         
         let height = frame.height - sliderTopSpace*2
@@ -68,11 +61,9 @@ class AMColorPickerSlider: UISlider {
     }
     
     func setGradient(startColor: UIColor, endColor: UIColor) {
-        
         CATransaction.begin()
         CATransaction.setValue(kCFBooleanTrue,
                                forKey: kCATransactionDisableActions)
-        
         
         sliderLayer.colors = [startColor.cgColor, endColor.cgColor]
         CATransaction.commit()

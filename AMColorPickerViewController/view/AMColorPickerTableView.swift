@@ -9,7 +9,6 @@
 import UIKit
 
 public protocol AMColorPickerTableViewDelegate: class {
-    
     func colorPickerTableView(colorPickerTableView: AMColorPickerTableView, didSelect color: UIColor)
 }
 
@@ -17,9 +16,7 @@ public class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDat
 
     weak public var delegate:AMColorPickerTableViewDelegate?
     public var selectedColor:UIColor = UIColor.white {
-        
         didSet {
-            
             colorView.backgroundColor = selectedColor
             var alpha:CGFloat = 0
             selectedColor.getRed(nil, green: nil, blue: nil, alpha: &alpha)
@@ -44,19 +41,16 @@ public class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDat
     
     //MARK:Initialize
     override public init(frame: CGRect) {
-        
         super.init(frame: frame)
         loadNib()
     }
     
     required public init(coder aDecoder: NSCoder) {
-        
         super.init(coder: aDecoder)!
         loadNib()
     }
     
     private func loadNib() {
-        
         let bundle = Bundle(for: AMColorPickerTableView.self)
         let view = bundle.loadNibNamed("AMColorPickerTableView", owner: self, options: nil)?.first as! UIView
         view.frame = bounds
@@ -75,19 +69,16 @@ public class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDat
     
     //MARK:IBAction
     @IBAction private func changedOpacitySlider(_ slider: UISlider) {
-        
         opacityLabel.text = NSString(format: "%.0f", slider.value) as String
         didSelect(color: colorView.backgroundColor!)
     }
     
     //MARK:UITableView DataSource
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return dataList.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AMColorPickerTableViewCell
         cell.info = dataList[indexPath.row]
         return cell
@@ -95,13 +86,11 @@ public class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDat
     
     //MARK:UITableView Delegate
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         didSelect(color: dataList[indexPath.row].color)
     }
     
     //MARK:SetColor
     private func didSelect(color: UIColor) {
-        
         var red:CGFloat = 0
         var green:CGFloat = 0
         var blue:CGFloat = 0
@@ -109,16 +98,11 @@ public class AMColorPickerTableView: UIView, UITableViewDelegate, UITableViewDat
         color.getRed(&red, green: &green, blue: &blue, alpha: nil)
         let selectColor = UIColor(red: red, green: green, blue: blue, alpha: CGFloat(alpha))
         colorView.backgroundColor = selectColor
-        
-        if let delegate = delegate {
-            
-            delegate.colorPickerTableView(colorPickerTableView: self, didSelect: selectColor)
-        }
+        delegate?.colorPickerTableView(colorPickerTableView: self, didSelect: selectColor)
     }
     
     //MARK:Reload
     public func reloadTable() {
-        
         tableView.reloadData()
         tableView.setContentOffset(CGPoint.zero, animated: false)
     }

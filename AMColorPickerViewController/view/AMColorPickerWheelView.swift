@@ -9,7 +9,6 @@
 import UIKit
 
 public protocol AMColorPickerWheelViewDelegate: class {
-    
     func colorPickerWheelView(colorPickerWheelView: AMColorPickerWheelView, didSelect color: UIColor)
 }
 
@@ -17,9 +16,7 @@ public class AMColorPickerWheelView: UIView {
     
     weak public var delegate:AMColorPickerWheelViewDelegate?
     public var selectedColor:UIColor = UIColor.white {
-        
         didSet {
-            
             colorView.backgroundColor = selectedColor
             let point = calculatePoint(color: selectedColor)
             cursorImageView.center = point
@@ -52,19 +49,16 @@ public class AMColorPickerWheelView: UIView {
     
     //MARK:Initialize
     override public init(frame: CGRect) {
-        
         super.init(frame: frame)
         loadNib()
     }
     
     required public init(coder aDecoder: NSCoder) {
-        
         super.init(coder: aDecoder)!
         loadNib()
     }
     
     private func loadNib() {
-        
         let bundle = Bundle(for: AMColorPickerWheelView.self)
         let view = bundle.loadNibNamed("AMColorPickerWheelView", owner: self, options: nil)?.first as! UIView
         view.frame = bounds
@@ -81,29 +75,24 @@ public class AMColorPickerWheelView: UIView {
     }
     
     override public func draw(_ rect: CGRect) {
-        
         let point = calculatePoint(color: selectedColor)
         cursorImageView.center = point
     }
     
     //MARK:Gesture Action
     @objc func panAction(gesture: UIPanGestureRecognizer) {
-        
         let point = gesture.location(in: colorPickerImageView.superview)
         let path = UIBezierPath(ovalIn: colorPickerImageView.frame)
         if path.contains(point) {
-            
             cursorImageView.center = point
             didSelect(color: calculateColor(point: point))
         }
     }
     
     @objc func tapAction(gesture: UITapGestureRecognizer) {
-        
         let point = gesture.location(in: colorPickerImageView.superview)
         let path = UIBezierPath(ovalIn: colorPickerImageView.frame)
         if path.contains(point) {
-            
             cursorImageView.center = point
             didSelect(color: calculateColor(point: point))
         }
@@ -111,20 +100,17 @@ public class AMColorPickerWheelView: UIView {
     
     //MARK:IBAction
     @IBAction private func changedBrightnessSlider(_ slider: UISlider) {
-        
         brightnessLabel.text = NSString(format: "%.0f", slider.value) as String
         didSelect(color: calculateColor(point: cursorImageView.center))
     }
     
     @IBAction private func changedOpacitySlider(_ slider: UISlider) {
-        
         opacityLabel.text = NSString(format: "%.0f", slider.value) as String
         didSelect(color: calculateColor(point: cursorImageView.center))
     }
     
     //MARK:SetColor
     private func setSliderColor(color: UIColor) {
-        
         var hue:CGFloat = 0
         var saturation:CGFloat = 0
         
@@ -135,19 +121,13 @@ public class AMColorPickerWheelView: UIView {
     }
     
     private func didSelect(color: UIColor) {
-        
         setSliderColor(color: color)
         colorView.backgroundColor = color
-        
-        if let delegate = delegate {
-            
-            delegate.colorPickerWheelView(colorPickerWheelView: self, didSelect: color)
-        }
+        delegate?.colorPickerWheelView(colorPickerWheelView: self, didSelect: color)
     }
     
     //MARK:Calculate
     private func calculateColor(point: CGPoint) -> UIColor {
-        
         let center = colorPickerImageView.center
         let radius = colorPickerImageView.frame.width/2
 
@@ -159,7 +139,6 @@ public class AMColorPickerWheelView: UIView {
         // Find the radian angle
         var radian = atan2f(Float(y), Float(x))
         if radian < 0 {
-            
             radian += Float(Double.pi*2)
         }
         
@@ -175,7 +154,6 @@ public class AMColorPickerWheelView: UIView {
     }
     
     private func calculatePoint(color: UIColor) -> CGPoint {
-        
         var hue:CGFloat = 0
         var saturation:CGFloat = 0
         var brightness:CGFloat = 0

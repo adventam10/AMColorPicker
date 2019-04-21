@@ -9,7 +9,6 @@
 import UIKit
 
 public protocol AMColorPickerRGBSliderViewDelegate: class {
-    
     func colorPickerRGBSliderView(colorPickerRGBSliderView: AMColorPickerRGBSliderView, didSelect color: UIColor)
 }
 
@@ -17,9 +16,7 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
 
     weak public var delegate:AMColorPickerRGBSliderViewDelegate?
     public var selectedColor:UIColor = UIColor.white {
-        
         didSet {
-            
             colorView.backgroundColor = selectedColor
             var red:CGFloat = 0
             var green:CGFloat = 0
@@ -62,19 +59,16 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     private var previousText = ""
     
     override public init(frame: CGRect) {
-        
         super.init(frame: frame)
         loadNib()
     }
     
     required public init(coder aDecoder: NSCoder) {
-        
         super.init(coder: aDecoder)!
         loadNib()
     }
     
     private func loadNib() {
-        
         let bundle = Bundle(for: AMColorPickerRGBSliderView.self)
         let view = bundle.loadNibNamed("AMColorPickerRGBSliderView", owner: self, options: nil)?.first as! UIView
         view.frame = bounds
@@ -84,7 +78,6 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     }
     
     override public func awakeFromNib() {
-        
         super.awakeFromNib()
         hexTextField.addTarget(self, action: #selector(self.didChange(textField:)), for: .editingChanged)
         hexTextField.delegate = self
@@ -92,10 +85,8 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     
     //MARK:UITextField Action
     @objc func didChange(textField: UITextField) {
-        
         // Retrieve the inputted characters
         guard let newText = textField.text else {
-            
             return
         }
         
@@ -103,13 +94,11 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
         let stringCharacterSet = CharacterSet(charactersIn: newText.lowercased())
         
         if !characterSet.isSuperset(of: stringCharacterSet) {
-            
             textField.text = previousText
             return
         }
         
         if newText.count != 6 {
-            
             return
         }
         
@@ -138,7 +127,6 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     public func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        
         // Get the inputted text
         let currentText = textField.text ?? ""
         let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
@@ -146,7 +134,6 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
         // Determine the number of characters
         let maxInputLength = 6
         if prospectiveText.count > maxInputLength {
-            
             return false
         }
         
@@ -155,14 +142,12 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         textField.resignFirstResponder()
         return true
     }
     
     //MARK:IBAction
     @IBAction private func changedRedSlider(_ slider: UISlider) {
-        
         redLabel.text = NSString(format: "%.0f", slider.value) as String
         let color = getColor()
         hexTextField.text = getHexString(color: color)
@@ -170,7 +155,6 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     }
     
     @IBAction private func changedGreenSlider(_ slider: UISlider) {
-        
         greenLabel.text = NSString(format: "%.0f", slider.value) as String
         let color = getColor()
         hexTextField.text = getHexString(color: color)
@@ -178,7 +162,6 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     }
     
     @IBAction private func changedBlueSlider(_ slider: UISlider) {
-        
         blueLabel.text = NSString(format: "%.0f", slider.value) as String
         let color = getColor()
         hexTextField.text = getHexString(color: color)
@@ -186,7 +169,6 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     }
     
     @IBAction private func changedOpacitySlider(_ slider: UISlider) {
-        
         opacityLabel.text = NSString(format: "%.0f", slider.value) as String
         let color = getColor()
         hexTextField.text = getHexString(color: color)
@@ -195,7 +177,6 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     
     //MARK:Calculate
     private func getColor() -> UIColor {
-        
         let red = NSString(string: redLabel.text!).floatValue/255.0
         let green = NSString(string: greenLabel.text!).floatValue/255.0
         let blue = NSString(string: blueLabel.text!).floatValue/255.0
@@ -207,7 +188,6 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     }
     
     private func getHexString(color: UIColor) -> String {
-        
         var red:CGFloat = 0
         var green:CGFloat = 0
         var blue:CGFloat = 0
@@ -218,19 +198,15 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     }
     
     private func getHexColor(hexStr: String, alpha: CGFloat) -> UIColor {
-        
         let hexString = hexStr.replacingOccurrences(of: "#", with: "")
         let scanner = Scanner(string: hexString)
         var color: UInt32 = 0
         if scanner.scanHexInt32(&color) {
-            
             let r = CGFloat((color & 0xFF0000) >> 16) / 255.0
             let g = CGFloat((color & 0x00FF00) >> 8) / 255.0
             let b = CGFloat(color & 0x0000FF) / 255.0
             return UIColor(red:r,green:g,blue:b,alpha:alpha)
-            
         } else {
-            
             print("invalid hex string")
             return UIColor.white
         }
@@ -238,17 +214,12 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     
     //MARK:SetColor
     private func didSelect(color: UIColor) {
-        
         colorView.backgroundColor = color
         setSliderColor(color: color)
-        if let delegate = delegate {
-            
-            delegate.colorPickerRGBSliderView(colorPickerRGBSliderView: self, didSelect: color)
-        }
+        delegate?.colorPickerRGBSliderView(colorPickerRGBSliderView: self, didSelect: color)
     }
     
     private func setSliderColor(color: UIColor) {
-        
         var red:CGFloat = 0
         var green:CGFloat = 0
         var blue:CGFloat = 0
@@ -264,7 +235,6 @@ public class AMColorPickerRGBSliderView: UIView, UITextFieldDelegate {
     
     //MARK:Close
     func closeKeyboard() {
-        
         hexTextField.resignFirstResponder()
     }
 }

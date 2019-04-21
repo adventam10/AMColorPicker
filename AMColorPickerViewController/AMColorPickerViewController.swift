@@ -9,7 +9,6 @@
 import UIKit
 
 public protocol AMColorPickerViewControllerDelegate: class {
-    
     func colorPickerViewController(colorPickerViewController: AMColorPickerViewController, didSelect color: UIColor)
 }
 
@@ -34,7 +33,6 @@ public class AMColorPickerViewController: UIViewController, AMColorPickerTableVi
     }
     
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
-        
         let bundle = Bundle(for: AMColorPickerViewController.self)
         super.init(nibName: "AMColorPickerViewController", bundle: bundle)
     }
@@ -44,7 +42,6 @@ public class AMColorPickerViewController: UIViewController, AMColorPickerTableVi
     }
     
     override public func viewDidLoad() {
-        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -58,30 +55,26 @@ public class AMColorPickerViewController: UIViewController, AMColorPickerTableVi
     }
 
     override public func didReceiveMemoryWarning() {
-        
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     //MARK: IBAction
     @IBAction private func changedSegment(_ sender: UISegmentedControl) {
-        
         cpSliderView.closeKeyboard()
-        let index = sender.selectedSegmentIndex
-        if index == SegmentIndex.picker.rawValue {
-            
+        guard let index = SegmentIndex.init(rawValue: sender.selectedSegmentIndex) else {
+            return
+        }
+        switch index {
+        case .picker:
             cpWheelView.isHidden = false
             cpTableView.isHidden = true
             cpSliderView.isHidden = true
-            
-        } else if index == SegmentIndex.slider.rawValue {
-            
+        case .slider:
             cpWheelView.isHidden = true
             cpTableView.isHidden = true
             cpSliderView.isHidden = false
-            
-        } else if index == SegmentIndex.table.rawValue {
-            
+        case .table:
             cpTableView.reloadTable()
             cpWheelView.isHidden = true
             cpTableView.isHidden = false
@@ -90,40 +83,27 @@ public class AMColorPickerViewController: UIViewController, AMColorPickerTableVi
     }
     
     @IBAction private func tappedCloseButton(_ sender: UIButton) {
-        
         dismiss(animated: true, completion: nil)
     }
     
     //MARK: AMColorPickerRGBSliderView Delegate
     public func colorPickerRGBSliderView(colorPickerRGBSliderView: AMColorPickerRGBSliderView, didSelect color: UIColor) {
-        
         cpTableView.selectedColor = color
         cpWheelView.selectedColor = color
-        if let delegate = delegate {
-            
-            delegate.colorPickerViewController(colorPickerViewController: self, didSelect: color)
-        }
+        delegate?.colorPickerViewController(colorPickerViewController: self, didSelect: color)
     }
     
     //MARK: AMColorPickerTableView Delegate
     public func colorPickerTableView(colorPickerTableView: AMColorPickerTableView, didSelect color: UIColor) {
-        
         cpSliderView.selectedColor = color
         cpWheelView.selectedColor = color
-        if let delegate = delegate {
-            
-            delegate.colorPickerViewController(colorPickerViewController: self, didSelect: color)
-        }
+        delegate?.colorPickerViewController(colorPickerViewController: self, didSelect: color)
     }
     
     //MARK: AMColorPickerWheelView Delegate
     public func colorPickerWheelView(colorPickerWheelView: AMColorPickerWheelView, didSelect color: UIColor) {
-        
         cpTableView.selectedColor = color
         cpSliderView.selectedColor = color
-        if let delegate = delegate {
-            
-            delegate.colorPickerViewController(colorPickerViewController: self, didSelect: color)
-        }
+        delegate?.colorPickerViewController(colorPickerViewController: self, didSelect: color)
     }
 }
