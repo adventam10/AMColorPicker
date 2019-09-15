@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,7 +39,7 @@
                                 <constraint firstAttribute="width" constant="50" id="RAZ-bt-EDc"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMJ-YJ-QOd">
@@ -52,11 +49,10 @@
                                 <constraint firstAttribute="width" constant="100" id="n4a-fV-LfR"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="QMJ-YJ-QOd" firstAttribute="top" secondItem="gid-9d-Xxs" secondAttribute="top" id="3pX-9Z-N8G"/>
                         <constraint firstAttribute="bottom" secondItem="EIL-8O-YoW" secondAttribute="bottom" id="7mp-GC-ZXu"/>
@@ -83,7 +79,7 @@
                                 <constraint firstAttribute="width" constant="50" id="bvf-ot-7uh"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IG5-eJ-4wr">
@@ -93,11 +89,10 @@
                                 <constraint firstAttribute="height" constant="21" id="gem-3x-SwD"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="tki-OD-Ha1" firstAttribute="leading" secondItem="IG5-eJ-4wr" secondAttribute="leading" id="CNY-so-tXY"/>
                         <constraint firstItem="IG5-eJ-4wr" firstAttribute="top" secondItem="ZHh-jg-2IL" secondAttribute="top" id="D9d-2j-pRm"/>
@@ -110,10 +105,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Faw-fy-MOS" userLabel="View - Header">
-                    <rect key="frame" x="0.0" y="20" width="375" height="100"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oxf-ow-7k7">
-                            <rect key="frame" x="67" y="25" width="240" height="50"/>
+                            <rect key="frame" x="67.5" y="25" width="240" height="50"/>
                             <color key="backgroundColor" red="0.0" green="1" blue="0.4481443007" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="1fT-Sp-zN4"/>
@@ -121,7 +116,6 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="oxf-ow-7k7" firstAttribute="centerX" secondItem="Faw-fy-MOS" secondAttribute="centerX" id="O34-ef-gxP"/>
                         <constraint firstAttribute="height" constant="100" id="isD-Rt-JQe"/>
@@ -129,10 +123,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMh-XR-xzT" userLabel="View - Wheel">
-                    <rect key="frame" x="0.0" y="120" width="375" height="417"/>
+                    <rect key="frame" x="0.0" y="100" width="375" height="437"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AMCP_color_wheel.png" translatesAutoresizingMaskIntoConstraints="NO" id="AoL-sp-vzE">
-                            <rect key="frame" x="37" y="58.5" width="300" height="300"/>
+                            <rect key="frame" x="37.5" y="68.5" width="300" height="300"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="1kL-Vm-YDI"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="7fB-j4-KoL"/>
@@ -144,7 +138,6 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AoL-sp-vzE" secondAttribute="trailing" constant="5" id="OGH-GO-nhe"/>
                         <constraint firstItem="AoL-sp-vzE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TMh-XR-xzT" secondAttribute="top" id="VyD-oI-YDE"/>
@@ -153,7 +146,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="ZHh-jg-2IL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1pP-fb-nm1"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Faw-fy-MOS" secondAttribute="trailing" id="Aav-oG-Iyd"/>
