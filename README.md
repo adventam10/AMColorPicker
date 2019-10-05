@@ -1,5 +1,10 @@
 ![AMColorPicker](https://github.com/Tobaloidee/AMColorPicker/blob/master/logo/logotype-a.png)
 
+![Pod Platform](https://img.shields.io/cocoapods/p/AMColorPicker.svg?style=flat)
+![Pod License](https://img.shields.io/cocoapods/l/AMColorPicker.svg?style=flat)
+[![Pod Version](https://img.shields.io/cocoapods/v/AMColorPicker.svg?style=flat)](http://cocoapods.org/pods/AMColorPicker)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 `AMColorPicker`  can select color by three ways.
 
 ## Demo
