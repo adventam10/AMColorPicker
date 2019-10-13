@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         colorPickerViewController.selectedColor = colorView.backgroundColor!
         colorPickerViewController.delegate = self
         colorPickerViewController.modalPresentationStyle = .popover
-        colorPickerViewController.preferredContentSize = CGSize(width: 300, height: 350)
+        colorPickerViewController.preferredContentSize = CGSize(width: 300, height: 380)
         
         let presentationController = colorPickerViewController.popoverPresentationController
         presentationController?.delegate = self
