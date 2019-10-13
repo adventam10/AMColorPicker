@@ -72,12 +72,6 @@ extension Float {
     }
 }
 
-extension String {
-    var cgFloatValue: CGFloat {
-        return CGFloat(Float(self)!)
-    }
-}
-
 public class XibLioadView: UIView {
     override public init(frame: CGRect) {
         super.init(frame: frame)

@@ -18,20 +18,7 @@ public class AMColorPickerWheelView: XibLioadView, AMColorPicker {
     }
     public var selectedColor: UIColor = .white {
         didSet {
-            colorView.backgroundColor = selectedColor
-            let point = calculatePoint(color: selectedColor)
-            cursorImageView.center = point
-            
-            let hsba = selectedColor.hsba
-            let alpha = hsba.alpha * 100
-            let brightness = hsba.brightness * 100
-            
-            opacityLabel.text = alpha.colorFormatted
-            brightnessLabel.text = brightness.colorFormatted
-            opacitySlider.value = Float(alpha)
-            brightnessSlider.value = Float(brightness)
-            
-            setSliderColor(color: selectedColor)
+            displayColor(selectedColor)
         }
     }
     
@@ -61,8 +48,7 @@ public class AMColorPickerWheelView: XibLioadView, AMColorPicker {
     }
     
     override public func draw(_ rect: CGRect) {
-        let point = calculatePoint(color: selectedColor)
-        cursorImageView.center = point
+        displayColor(selectedColor)
     }
     
     // MARK:- Gesture Action
@@ -70,19 +56,12 @@ public class AMColorPickerWheelView: XibLioadView, AMColorPicker {
         let point = gesture.location(in: colorPickerImageView.superview)
         let path = UIBezierPath(ovalIn: colorPickerImageView.frame)
         if path.contains(point) {
-            cursorImageView.center = point
             didSelect(color: calculateColor(point: point))
         }
     }
     
     // MARK:- IBAction
-    @IBAction private func changedBrightnessSlider(_ slider: UISlider) {
-        brightnessLabel.text = slider.value.colorFormatted
-        didSelect(color: calculateColor(point: cursorImageView.center))
-    }
-    
-    @IBAction private func changedOpacitySlider(_ slider: UISlider) {
-        opacityLabel.text = slider.value.colorFormatted
+    @IBAction private func changedSlider(_ slider: UISlider) {
         didSelect(color: calculateColor(point: cursorImageView.center))
     }
     
@@ -95,9 +74,23 @@ public class AMColorPickerWheelView: XibLioadView, AMColorPicker {
     }
     
     private func didSelect(color: UIColor) {
-        setSliderColor(color: color)
-        colorView.backgroundColor = color
+        selectedColor = color
         delegate?.colorPicker(self, didSelect: color)
+    }
+    
+    private func displayColor(_ color: UIColor) {
+        colorView.backgroundColor = color
+        cursorImageView.center = calculatePoint(color: color)
+        
+        let hsba = color.hsba
+        let alpha = hsba.alpha * 100
+        let brightness = hsba.brightness * 100
+        opacityLabel.text = alpha.colorFormatted
+        brightnessLabel.text = brightness.colorFormatted
+        opacitySlider.value = Float(alpha)
+        brightnessSlider.value = Float(brightness)
+        
+        setSliderColor(color: color)
     }
     
     // MARK:- Calculate

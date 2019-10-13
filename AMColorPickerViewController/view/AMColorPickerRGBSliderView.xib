@@ -103,7 +103,7 @@
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-8f-32D" customClass="AMColorPickerSlider" customModule="SampleAMColorPicker" customModuleProvider="target">
                                             <rect key="frame" x="-2" y="0.0" width="307" height="31"/>
                                             <connections>
-                                                <action selector="changedRedSlider:" destination="-1" eventType="valueChanged" id="8Ql-JQ-pFf"/>
+                                                <action selector="changedSlider:" destination="-1" eventType="valueChanged" id="BIN-2e-sng"/>
                                             </connections>
                                         </slider>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbf-sr-J3b">
@@ -134,7 +134,7 @@
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="jJR-Xz-HFB" customClass="AMColorPickerSlider" customModule="SampleAMColorPicker" customModuleProvider="target">
                                             <rect key="frame" x="-2" y="0.0" width="307" height="31"/>
                                             <connections>
-                                                <action selector="changedGreenSlider:" destination="-1" eventType="valueChanged" id="R2E-6I-d0I"/>
+                                                <action selector="changedSlider:" destination="-1" eventType="valueChanged" id="Dwq-Su-k7f"/>
                                             </connections>
                                         </slider>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riP-DL-b9C">
@@ -165,7 +165,7 @@
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="255" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="OHP-dx-7OU" customClass="AMColorPickerSlider" customModule="SampleAMColorPicker" customModuleProvider="target">
                                             <rect key="frame" x="-2" y="0.0" width="307" height="31"/>
                                             <connections>
-                                                <action selector="changedBlueSlider:" destination="-1" eventType="valueChanged" id="M4i-Ng-wdp"/>
+                                                <action selector="changedSlider:" destination="-1" eventType="valueChanged" id="WXh-sI-akv"/>
                                             </connections>
                                         </slider>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1O-8h-Koz">
@@ -198,7 +198,7 @@
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="WnP-FV-ZtJ">
                                     <rect key="frame" x="-2" y="0.0" width="307" height="31"/>
                                     <connections>
-                                        <action selector="changedOpacitySlider:" destination="-1" eventType="valueChanged" id="fIb-k0-is4"/>
+                                        <action selector="changedSlider:" destination="-1" eventType="valueChanged" id="IzK-Qp-bOa"/>
                                     </connections>
                                 </slider>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxl-D3-MsT">

@@ -18,10 +18,7 @@ public class AMColorPickerTableView: XibLioadView, AMColorPicker {
     }
     public var selectedColor: UIColor = .white {
         didSet {
-            colorView.backgroundColor = selectedColor
-            let alpha = selectedColor.rgba.alpha * 100
-            opacityLabel.text = alpha.colorFormatted
-            opacitySlider.value = Float(alpha)
+            displayColor(selectedColor)
         }
     }
     
@@ -51,17 +48,22 @@ public class AMColorPickerTableView: XibLioadView, AMColorPicker {
 
     // MARK:- IBAction
     @IBAction private func changedOpacitySlider(_ slider: UISlider) {
-        opacityLabel.text = slider.value.colorFormatted
-        didSelect(color: colorView.backgroundColor!)
+        didSelect(color: selectedColor)
     }
     
     // MARK:- SetColor
     private func didSelect(color: UIColor) {
         let rgba = color.rgba
-        let alpha = opacityLabel.text!.cgFloatValue / 100.0
-        let selectColor = UIColor(red: rgba.red, green: rgba.green, blue: rgba.blue, alpha: alpha)
-        colorView.backgroundColor = selectColor
-        delegate?.colorPicker(self, didSelect: selectColor)
+        let alpha = CGFloat(opacitySlider.value) / 100.0
+        selectedColor = UIColor(red: rgba.red, green: rgba.green, blue: rgba.blue, alpha: alpha)
+        delegate?.colorPicker(self, didSelect: selectedColor)
+    }
+    
+    private func displayColor(_ color: UIColor) {
+        colorView.backgroundColor = color
+        let alpha = color.rgba.alpha * 100
+        opacityLabel.text = alpha.colorFormatted
+        opacitySlider.value = Float(alpha)
     }
     
     // MARK:- Reload

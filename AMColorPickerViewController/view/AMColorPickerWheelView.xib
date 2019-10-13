@@ -93,7 +93,7 @@
                                         <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="EIL-8O-YoW" customClass="AMColorPickerSlider" customModule="SampleAMColorPicker" customModuleProvider="target">
                                             <rect key="frame" x="-2" y="0.0" width="307" height="31"/>
                                             <connections>
-                                                <action selector="changedBrightnessSlider:" destination="-1" eventType="valueChanged" id="GNT-h9-jyx"/>
+                                                <action selector="changedSlider:" destination="-1" eventType="valueChanged" id="ud3-8A-EZb"/>
                                             </connections>
                                         </slider>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTH-8u-DMh">
@@ -124,7 +124,7 @@
                                         <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="tki-OD-Ha1">
                                             <rect key="frame" x="-2" y="0.0" width="307" height="31"/>
                                             <connections>
-                                                <action selector="changedOpacitySlider:" destination="-1" eventType="valueChanged" id="WqI-cS-Uv5"/>
+                                                <action selector="changedSlider:" destination="-1" eventType="valueChanged" id="VxV-C9-67k"/>
                                             </connections>
                                         </slider>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKI-xo-2H5">
