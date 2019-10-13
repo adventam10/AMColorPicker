@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AMColorPickerViewController" customModule="SampleAMColorPicker" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="u26-67-pAN" id="Zcq-cs-U9b"/>
                 <outlet property="cpSliderView" destination="Xy3-wJ-j1R" id="ZRu-OW-q72"/>
                 <outlet property="cpTableView" destination="2n3-Yu-sgT" id="sHa-ij-yJk"/>
                 <outlet property="cpWheelView" destination="lj0-Ta-LSf" id="d4n-8m-agm"/>

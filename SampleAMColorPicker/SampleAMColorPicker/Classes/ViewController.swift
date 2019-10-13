@@ -10,27 +10,57 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak private var colorView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func tappedButton(_ sender: Any) {
+    
+    @IBAction func tappedModalButton(_ sender: Any) {
         let colorPickerViewController = AMColorPickerViewController()
-        colorPickerViewController.selectedColor = view.backgroundColor!
+        colorPickerViewController.selectedColor = colorView.backgroundColor!
         colorPickerViewController.delegate = self
+        present(colorPickerViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func tappedPushButton(_ sender: Any) {
+        let colorPickerViewController = AMColorPickerViewController()
+        colorPickerViewController.isCloseButtonShown = false
+        colorPickerViewController.selectedColor = colorView.backgroundColor!
+        colorPickerViewController.delegate = self
+        navigationController?.pushViewController(colorPickerViewController, animated: true)
+    }
+    
+    @IBAction func tappedPopoverButton(_ sender: Any) {
+        let colorPickerViewController = AMColorPickerViewController()
+        colorPickerViewController.isCloseButtonShown = false
+        colorPickerViewController.isSelectedColorShown = false
+        colorPickerViewController.selectedColor = colorView.backgroundColor!
+        colorPickerViewController.delegate = self
+        colorPickerViewController.modalPresentationStyle = .popover
+        colorPickerViewController.preferredContentSize = CGSize(width: 300, height: 350)
+        
+        let presentationController = colorPickerViewController.popoverPresentationController
+        presentationController?.delegate = self
+        presentationController?.permittedArrowDirections = .any
+        let button = sender as! UIButton
+        presentationController?.sourceView = button
+        presentationController?.sourceRect = button.bounds
         present(colorPickerViewController, animated: true, completion: nil)
     }
 }
 
 extension ViewController: AMColorPickerDelegate {
     func colorPicker(_ colorPicker: AMColorPicker, didSelect color: UIColor) {
-        view.backgroundColor = color
+        colorView.backgroundColor = color
+    }
+}
+
+extension ViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController,
+                                   traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
 }

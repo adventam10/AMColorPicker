@@ -18,7 +18,20 @@ public class AMColorPickerViewController: UIViewController, AMColorPicker {
     
     weak public var delegate: AMColorPickerDelegate?
     public var selectedColor: UIColor = .white
+    public var isCloseButtonShown: Bool = true {
+        didSet {
+            closeButton?.isHidden = !isCloseButtonShown
+        }
+    }
+    public var isSelectedColorShown: Bool = true {
+        didSet {
+            cpWheelView?.isSelectedColorShown = isSelectedColorShown
+            cpTableView?.isSelectedColorShown = isSelectedColorShown
+            cpSliderView?.isSelectedColorShown = isSelectedColorShown
+        }
+    }
     
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak private var cpWheelView: AMColorPickerWheelView!
     @IBOutlet weak private var cpTableView: AMColorPickerTableView!
     @IBOutlet weak private var cpSliderView: AMColorPickerRGBSliderView!
@@ -41,6 +54,11 @@ public class AMColorPickerViewController: UIViewController, AMColorPicker {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        closeButton.isHidden = !isCloseButtonShown
+        cpTableView.isSelectedColorShown = isSelectedColorShown
+        cpSliderView.isSelectedColorShown = isSelectedColorShown
+        cpWheelView.isSelectedColorShown = isSelectedColorShown
+        
         cpTableView.delegate = self
         cpSliderView.delegate = self
         cpWheelView.delegate = self

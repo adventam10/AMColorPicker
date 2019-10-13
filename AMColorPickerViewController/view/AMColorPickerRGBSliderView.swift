@@ -11,6 +11,12 @@ import UIKit
 public class AMColorPickerRGBSliderView: XibLioadView, AMColorPicker {
 
     weak public var delegate: AMColorPickerDelegate?
+    public var isSelectedColorShown: Bool = true {
+        didSet {
+            headerView?.isHidden = !isSelectedColorShown
+        }
+    }
+    
     public var selectedColor: UIColor = .white {
         didSet {
             colorView.backgroundColor = selectedColor
@@ -34,21 +40,27 @@ public class AMColorPickerRGBSliderView: XibLioadView, AMColorPicker {
         }
     }
     
+    @IBOutlet weak private var headerView: UIView!
     @IBOutlet weak private var redSlider: AMColorPickerSlider!
     @IBOutlet weak private var greenSlider: AMColorPickerSlider!
     @IBOutlet weak private var blueSlider: AMColorPickerSlider!
     @IBOutlet weak private var opacitySlider: UISlider!
-    
+    @IBOutlet weak private var rgbSliderStackView: UIStackView!
     @IBOutlet weak private var redLabel: UILabel!
     @IBOutlet weak private var greenLabel: UILabel!
     @IBOutlet weak private var blueLabel: UILabel!
     @IBOutlet weak private var opacityLabel: UILabel!
-    
     @IBOutlet weak private var colorView: UIView!
     @IBOutlet weak private var hexTextField: UITextField! {
         didSet {
             hexTextField.addTarget(self, action: #selector(self.didChange(textField:)), for: .editingChanged)
             hexTextField.delegate = self
+        }
+    }
+    
+    override public var bounds: CGRect {
+        didSet {
+            rgbSliderStackView.spacing = bounds.height < 488 ? 16 : 32
         }
     }
     

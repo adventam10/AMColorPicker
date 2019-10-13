@@ -11,6 +11,11 @@ import UIKit
 public class AMColorPickerTableView: XibLioadView, AMColorPicker {
 
     weak public var delegate: AMColorPickerDelegate?
+    public var isSelectedColorShown: Bool = true {
+        didSet {
+            headerView?.isHidden = !isSelectedColorShown
+        }
+    }
     public var selectedColor: UIColor = .white {
         didSet {
             colorView.backgroundColor = selectedColor
@@ -20,6 +25,7 @@ public class AMColorPickerTableView: XibLioadView, AMColorPicker {
         }
     }
     
+    @IBOutlet weak private var headerView: UIView!
     @IBOutlet weak private var opacityLabel: UILabel!
     @IBOutlet weak private var opacitySlider: UISlider!
     @IBOutlet weak private var colorView: UIView!

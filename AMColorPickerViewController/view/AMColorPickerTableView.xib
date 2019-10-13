@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AMColorPickerTableView" customModule="SampleAMColorPicker" customModuleProvider="target">
             <connections>
                 <outlet property="colorView" destination="a3z-iM-pZv" id="WYt-CD-ANF"/>
+                <outlet property="headerView" destination="IpP-Fg-Qbq" id="rX4-hp-P41"/>
                 <outlet property="opacityLabel" destination="cC0-ax-FHI" id="jGM-NS-Sf6"/>
                 <outlet property="opacitySlider" destination="pRJ-5Y-Ggg" id="Tat-E6-Rh4"/>
                 <outlet property="tableView" destination="cvS-fT-0iJ" id="o5E-WV-OuZ"/>
@@ -53,26 +54,26 @@
                     <rect key="frame" x="16" y="594" width="343" height="41"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYZ-zQ-N8p">
-                            <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="343" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vUE-ns-5FL">
-                            <rect key="frame" x="0.0" y="20.5" width="343" height="20.5"/>
+                            <rect key="frame" x="0.0" y="18" width="343" height="23"/>
                             <subviews>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="pRJ-5Y-Ggg">
-                                    <rect key="frame" x="-2" y="0.0" width="307" height="21.5"/>
+                                    <rect key="frame" x="-2" y="0.0" width="307" height="24"/>
                                     <connections>
                                         <action selector="changedOpacitySlider:" destination="-1" eventType="valueChanged" id="lKI-rw-yKX"/>
                                     </connections>
                                 </slider>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cC0-ax-FHI">
-                                    <rect key="frame" x="311" y="0.0" width="32" height="20.5"/>
+                                    <rect key="frame" x="311" y="0.0" width="32" height="23"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="32" id="Jdi-dg-Cm2"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <nil key="highlightedColor"/>
                                 </label>
