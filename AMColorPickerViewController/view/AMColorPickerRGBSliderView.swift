@@ -54,6 +54,9 @@ public class AMColorPickerRGBSliderView: XibLioadView, AMColorPicker {
     
     private var previousText = ""
     
+    private let colorCodeLength = 6
+    private let colorCodeCharacterSet = CharacterSet(charactersIn: "0123456789abcdef")
+    
     // MARK:- UITextField Action
     @objc func didChange(textField: UITextField) {
         // Retrieve the inputted characters
@@ -61,13 +64,12 @@ public class AMColorPickerRGBSliderView: XibLioadView, AMColorPicker {
             return
         }
         
-        let characterSet = CharacterSet(charactersIn: "0123456789abcdef")
-        if !characterSet.isSuperset(of: CharacterSet(charactersIn: newText.lowercased())) {
+        if !colorCodeCharacterSet.isSuperset(of: CharacterSet(charactersIn: newText.lowercased())) {
             textField.text = previousText
             return
         }
         
-        if newText.count != 6 {
+        if newText.count != colorCodeLength {
             return
         }
         
@@ -155,8 +157,7 @@ extension AMColorPickerRGBSliderView: UITextFieldDelegate {
         let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
         
         // Determine the number of characters
-        let maxInputLength = 6
-        if prospectiveText.count > maxInputLength {
+        if prospectiveText.count > colorCodeLength {
             return false
         }
         

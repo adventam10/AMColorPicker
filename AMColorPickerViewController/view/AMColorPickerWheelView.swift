@@ -38,10 +38,10 @@ public class AMColorPickerWheelView: XibLioadView, AMColorPicker {
     @IBOutlet weak private var colorPickerImageView: UIImageView! {
         didSet {
             colorPickerImageView.isUserInteractionEnabled = true
-            let pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(gesture:)))
+            let pan = UIPanGestureRecognizer(target: self, action: #selector(self.gestureAction(gesture:)))
             colorPickerImageView.addGestureRecognizer(pan)
             
-            let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapAction(gesture:)))
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.gestureAction(gesture:)))
             colorPickerImageView.addGestureRecognizer(tap)
         }
     }
@@ -60,16 +60,7 @@ public class AMColorPickerWheelView: XibLioadView, AMColorPicker {
     }
     
     // MARK:- Gesture Action
-    @objc func panAction(gesture: UIPanGestureRecognizer) {
-        let point = gesture.location(in: colorPickerImageView.superview)
-        let path = UIBezierPath(ovalIn: colorPickerImageView.frame)
-        if path.contains(point) {
-            cursorImageView.center = point
-            didSelect(color: calculateColor(point: point))
-        }
-    }
-    
-    @objc func tapAction(gesture: UITapGestureRecognizer) {
+    @objc func gestureAction(gesture: UIGestureRecognizer) {
         let point = gesture.location(in: colorPickerImageView.superview)
         let path = UIBezierPath(ovalIn: colorPickerImageView.frame)
         if path.contains(point) {
