@@ -10,23 +10,19 @@ import UIKit
 
 public class AMColorPickerWheelView: UIView, AMColorPicker {
     
-    weak public var delegate:AMColorPickerDelegate?
-    public var selectedColor:UIColor = UIColor.white {
+    weak public var delegate: AMColorPickerDelegate?
+    public var selectedColor: UIColor = .white {
         didSet {
             colorView.backgroundColor = selectedColor
             let point = calculatePoint(color: selectedColor)
             cursorImageView.center = point
             
-            var hue:CGFloat = 0
-            var saturation:CGFloat = 0
-            var brightness:CGFloat = 0
-            var alpha:CGFloat = 0
-            selectedColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
-            alpha = alpha * 100
-            brightness = brightness * 100
+            let hsba = selectedColor.hsba
+            let alpha = hsba.alpha * 100
+            let brightness = hsba.brightness * 100
             
-            opacityLabel.text = NSString(format: "%.0f", alpha) as String
-            brightnessLabel.text = NSString(format: "%.0f", brightness) as String
+            opacityLabel.text = alpha.colorFormatted
+            brightnessLabel.text = brightness.colorFormatted
             opacitySlider.value = Float(alpha)
             brightnessSlider.value = Float(brightness)
             
@@ -43,7 +39,14 @@ public class AMColorPickerWheelView: UIView, AMColorPicker {
     @IBOutlet weak private var colorPickerImageView: UIImageView!
     @IBOutlet weak private var cursorImageView: UIImageView!
     
-    //MARK:Initialize
+    private var radius: CGFloat {
+        return colorPickerImageView.frame.width/2
+    }
+    private var pickerCenter: CGPoint {
+        return colorPickerImageView.center
+    }
+    
+    // MARK:- Initialize
     override public init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
@@ -75,7 +78,7 @@ public class AMColorPickerWheelView: UIView, AMColorPicker {
         cursorImageView.center = point
     }
     
-    //MARK:Gesture Action
+    // MARK:- Gesture Action
     @objc func panAction(gesture: UIPanGestureRecognizer) {
         let point = gesture.location(in: colorPickerImageView.superview)
         let path = UIBezierPath(ovalIn: colorPickerImageView.frame)
@@ -94,26 +97,22 @@ public class AMColorPickerWheelView: UIView, AMColorPicker {
         }
     }
     
-    //MARK:IBAction
+    // MARK:- IBAction
     @IBAction private func changedBrightnessSlider(_ slider: UISlider) {
-        brightnessLabel.text = NSString(format: "%.0f", slider.value) as String
+        brightnessLabel.text = slider.value.colorFormatted
         didSelect(color: calculateColor(point: cursorImageView.center))
     }
     
     @IBAction private func changedOpacitySlider(_ slider: UISlider) {
-        opacityLabel.text = NSString(format: "%.0f", slider.value) as String
+        opacityLabel.text = slider.value.colorFormatted
         didSelect(color: calculateColor(point: cursorImageView.center))
     }
     
-    //MARK:SetColor
+    // MARK:- SetColor
     private func setSliderColor(color: UIColor) {
-        var hue:CGFloat = 0
-        var saturation:CGFloat = 0
-        
-        color.getHue(&hue, saturation: &saturation, brightness: nil, alpha: nil)
-        
-        brightnessSlider.setGradient(startColor: UIColor.clear,
-                                     endColor: UIColor(hue: hue, saturation: saturation, brightness: 1.0, alpha: 1.0))
+        let hsba = color.hsba
+        brightnessSlider.setGradient(startColor: .clear,
+                                     endColor: .init(hue: hsba.hue, saturation: hsba.saturation, brightness: 1.0, alpha: 1.0))
     }
     
     private func didSelect(color: UIColor) {
@@ -122,15 +121,12 @@ public class AMColorPickerWheelView: UIView, AMColorPicker {
         delegate?.colorPicker(self, didSelect: color)
     }
     
-    //MARK:Calculate
+    // MARK:- Calculate
     private func calculateColor(point: CGPoint) -> UIColor {
-        let center = colorPickerImageView.center
-        let radius = colorPickerImageView.frame.width/2
-
         // Since the upper side of the screen for obtaining the coordinate difference
         // is set as the Y coordinate +, the sign of Y coordinate is replaced
-        let x = point.x - center.x
-        let y = -(point.y - center.y)
+        let x = point.x - pickerCenter.x
+        let y = -(point.y - pickerCenter.y)
         
         // Find the radian angle
         var radian = atan2f(Float(y), Float(x))
@@ -139,31 +135,19 @@ public class AMColorPickerWheelView: UIView, AMColorPicker {
         }
         
         let distance = CGFloat(sqrtf(Float(pow(Double(x), 2) + pow(Double(y), 2))))
-        let saturation = (distance > radius) ? 1.0 : distance/radius
-        let brightness = CGFloat(brightnessSlider.value)/100.0
-        let alpha = CGFloat(opacitySlider.value)/100.0;
-        let hue = CGFloat(radian/Float(Double.pi*2))
-        return UIColor(hue: hue,
-                       saturation: saturation,
-                       brightness: brightness,
-                       alpha: alpha)
+        let saturation = (distance > radius) ? 1.0 : distance / radius
+        let brightness = CGFloat(brightnessSlider.value) / 100.0
+        let alpha = CGFloat(opacitySlider.value) / 100.0
+        let hue = CGFloat(radian / Float(Double.pi*2))
+        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
     }
     
     private func calculatePoint(color: UIColor) -> CGPoint {
-        var hue:CGFloat = 0
-        var saturation:CGFloat = 0
-        var brightness:CGFloat = 0
-        var alpha:CGFloat = 0
-        
-        color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
-        let center = colorPickerImageView.center
-        let radius = colorPickerImageView.frame.width/2
-        let angle = Float(hue) * Float(Double.pi*2)
-        
-        let smallRadius = saturation * radius
-        let point = CGPoint(x: center.x + smallRadius * CGFloat(cosf(angle)),
-                            y: center.y + smallRadius * CGFloat(sinf(angle))*(-1))
-        
+        let hsba = selectedColor.hsba
+        let angle = Float(hsba.hue) * Float(Double.pi*2)
+        let smallRadius = hsba.saturation * radius
+        let point = CGPoint(x: pickerCenter.x + smallRadius * CGFloat(cosf(angle)),
+                            y: pickerCenter.y + smallRadius * CGFloat(sinf(angle))*(-1))
         return point
     }
 }

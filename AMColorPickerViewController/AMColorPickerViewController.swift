@@ -10,14 +10,14 @@ import UIKit
 
 public class AMColorPickerViewController: UIViewController, AMColorPicker {
 
-    enum SegmentIndex:Int {
+    enum SegmentIndex: Int {
         case picker = 0
         case table = 1
         case slider = 2
     }
     
-    weak public var delegate:AMColorPickerDelegate?
-    public var selectedColor:UIColor = UIColor.white
+    weak public var delegate: AMColorPickerDelegate?
+    public var selectedColor: UIColor = .white
     
     @IBOutlet weak private var cpWheelView: AMColorPickerWheelView!
     @IBOutlet weak private var cpTableView: AMColorPickerTableView!
@@ -50,18 +50,10 @@ public class AMColorPickerViewController: UIViewController, AMColorPicker {
         cpWheelView.selectedColor = selectedColor
     }
 
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    //MARK: IBAction
+    // MARK:- IBAction
     @IBAction private func changedSegment(_ sender: UISegmentedControl) {
         cpSliderView.closeKeyboard()
-        guard let index = SegmentIndex.init(rawValue: sender.selectedSegmentIndex) else {
-            return
-        }
-        switch index {
+        switch SegmentIndex(rawValue: sender.selectedSegmentIndex)! {
         case .picker:
             cpWheelView.isHidden = false
             cpTableView.isHidden = true

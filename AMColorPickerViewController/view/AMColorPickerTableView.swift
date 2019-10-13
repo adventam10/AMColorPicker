@@ -10,14 +10,12 @@ import UIKit
 
 public class AMColorPickerTableView: UIView, AMColorPicker {
 
-    weak public var delegate:AMColorPickerDelegate?
-    public var selectedColor:UIColor = UIColor.white {
+    weak public var delegate: AMColorPickerDelegate?
+    public var selectedColor: UIColor = .white {
         didSet {
             colorView.backgroundColor = selectedColor
-            var alpha:CGFloat = 0
-            selectedColor.getRed(nil, green: nil, blue: nil, alpha: &alpha)
-            alpha = alpha * 100
-            opacityLabel.text = NSString(format: "%.0f", alpha) as String
+            let alpha = selectedColor.rgba.alpha * 100
+            opacityLabel.text = alpha.colorFormatted
             opacitySlider.value = Float(alpha)
         }
     }
@@ -25,17 +23,27 @@ public class AMColorPickerTableView: UIView, AMColorPicker {
     @IBOutlet weak private var opacityLabel: UILabel!
     @IBOutlet weak private var opacitySlider: UISlider!
     @IBOutlet weak private var colorView: UIView!
-    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet weak private var tableView: UITableView! {
+        didSet {
+            tableView.delegate = self
+            tableView.dataSource = self
+            let nib = UINib(nibName: "AMColorPickerTableViewCell", bundle: Bundle(for: AMColorPickerTableView.self))
+            tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
+            tableView.tableFooterView = UIView()
+        }
+    }
     
     private let cellIdentifier = "AMColorPickerTableViewCell"
-    private let dataList = [AMCPCellInfo(title: "Black", color: UIColor.black), AMCPCellInfo(title: "Blue", color: UIColor.blue),
-                            AMCPCellInfo(title: "Brown", color: UIColor.brown), AMCPCellInfo(title: "Cyan", color: UIColor.cyan),
-                            AMCPCellInfo(title: "Green", color: UIColor.green), AMCPCellInfo(title: "Magenta", color: UIColor.magenta),
-                            AMCPCellInfo(title: "Orange", color: UIColor.orange), AMCPCellInfo(title: "Purple", color: UIColor.purple),
-                            AMCPCellInfo(title: "Red", color: UIColor.red), AMCPCellInfo(title: "Yellow", color: UIColor.yellow),
-                            AMCPCellInfo(title: "White", color: UIColor.white)]
+    private let dataList: [AMCPCellInfo] = [
+        .init(title: "Black", color: .black), .init(title: "Blue", color: .blue),
+        .init(title: "Brown", color: .brown), .init(title: "Cyan", color: .cyan),
+        .init(title: "Green", color: .green), .init(title: "Magenta", color: .magenta),
+        .init(title: "Orange", color: .orange), .init(title: "Purple", color: .purple),
+        .init(title: "Red", color: .red), .init(title: "Yellow", color: .yellow),
+        .init(title: "White", color: .white)
+    ]
     
-    //MARK:Initialize
+    // MARK:- Initialize
     override public init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
@@ -53,38 +61,27 @@ public class AMColorPickerTableView: UIView, AMColorPicker {
         view.translatesAutoresizingMaskIntoConstraints = true
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        let nib = UINib(nibName: "AMColorPickerTableViewCell", bundle: bundle)
-        tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
-        
-        tableView.tableFooterView = UIView()
     }
     
-    //MARK:IBAction
+    // MARK:- IBAction
     @IBAction private func changedOpacitySlider(_ slider: UISlider) {
-        opacityLabel.text = NSString(format: "%.0f", slider.value) as String
+        opacityLabel.text = slider.value.colorFormatted
         didSelect(color: colorView.backgroundColor!)
     }
     
-    //MARK:SetColor
+    // MARK:- SetColor
     private func didSelect(color: UIColor) {
-        var red:CGFloat = 0
-        var green:CGFloat = 0
-        var blue:CGFloat = 0
+        let rgba = color.rgba
         let alpha = NSString(string: opacityLabel.text!).floatValue/100.0
-        color.getRed(&red, green: &green, blue: &blue, alpha: nil)
-        let selectColor = UIColor(red: red, green: green, blue: blue, alpha: CGFloat(alpha))
+        let selectColor = UIColor(red: rgba.red, green: rgba.green, blue: rgba.blue, alpha: CGFloat(alpha))
         colorView.backgroundColor = selectColor
         delegate?.colorPicker(self, didSelect: selectColor)
     }
     
-    //MARK:Reload
+    // MARK:- Reload
     public func reloadTable() {
         tableView.reloadData()
-        tableView.setContentOffset(CGPoint.zero, animated: false)
+        tableView.setContentOffset(.zero, animated: false)
     }
 }
 

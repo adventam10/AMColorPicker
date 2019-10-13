@@ -10,31 +10,26 @@ import UIKit
 
 public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
 
-    weak public var delegate:AMColorPickerDelegate?
-    public var selectedColor:UIColor = UIColor.white {
+    weak public var delegate: AMColorPickerDelegate?
+    public var selectedColor: UIColor = .white {
         didSet {
             colorView.backgroundColor = selectedColor
-            var red:CGFloat = 0
-            var green:CGFloat = 0
-            var blue:CGFloat = 0
-            var alpha:CGFloat = 0
-            selectedColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-            red = red * 255
-            green = green * 255
-            blue = blue * 255
-            alpha = alpha * 100
-            redLabel.text = NSString(format: "%.0f", red) as String
-            greenLabel.text = NSString(format: "%.0f", green) as String
-            blueLabel.text = NSString(format: "%.0f", blue) as String
-            opacityLabel.text = NSString(format: "%.0f", alpha) as String
+            let rgba = selectedColor.rgba
+            let red = rgba.red * 255
+            let green = rgba.green * 255
+            let blue = rgba.blue * 255
+            let alpha = rgba.alpha * 100
+            redLabel.text = red.colorFormatted
+            greenLabel.text = green.colorFormatted
+            blueLabel.text = blue.colorFormatted
+            opacityLabel.text = alpha.colorFormatted
             
             redSlider.value = Float(red)
             greenSlider.value = Float(green)
             blueSlider.value = Float(blue)
             opacitySlider.value = Float(alpha)
             
-            hexTextField.text = getHexString(color: selectedColor)
-            
+            hexTextField.text = selectedColor.colorCode
             setSliderColor(color: selectedColor)
         }
     }
@@ -50,7 +45,12 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
     @IBOutlet weak private var opacityLabel: UILabel!
     
     @IBOutlet weak private var colorView: UIView!
-    @IBOutlet weak private var hexTextField: UITextField!
+    @IBOutlet weak private var hexTextField: UITextField! {
+        didSet {
+            hexTextField.addTarget(self, action: #selector(self.didChange(textField:)), for: .editingChanged)
+            hexTextField.delegate = self
+        }
+    }
     
     private var previousText = ""
     
@@ -72,14 +72,8 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
     }
-    
-    override public func awakeFromNib() {
-        super.awakeFromNib()
-        hexTextField.addTarget(self, action: #selector(self.didChange(textField:)), for: .editingChanged)
-        hexTextField.delegate = self
-    }
-    
-    //MARK:UITextField Action
+        
+    // MARK:- UITextField Action
     @objc func didChange(textField: UITextField) {
         // Retrieve the inputted characters
         guard let newText = textField.text else {
@@ -99,18 +93,14 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
         }
         
         let alpha = NSString(string: opacityLabel.text!).floatValue/100.0
-        let color = getHexColor(hexStr: newText, alpha: CGFloat(alpha))
-       
-        var red:CGFloat = 0
-        var green:CGFloat = 0
-        var blue:CGFloat = 0
-        color.getRed(&red, green: &green, blue: &blue, alpha: nil)
-        red = red * 255
-        green = green * 255
-        blue = blue * 255
-        redLabel.text = NSString(format: "%.0f", red) as String
-        greenLabel.text = NSString(format: "%.0f", green) as String
-        blueLabel.text = NSString(format: "%.0f", blue) as String
+        let color = UIColor(hex: newText, alpha: CGFloat(alpha))
+        let rgba = color.rgba
+        let red = rgba.red * 255
+        let green = rgba.green * 255
+        let blue = rgba.blue * 255
+        redLabel.text = red.colorFormatted
+        greenLabel.text = green.colorFormatted
+        blueLabel.text = blue.colorFormatted
         
         redSlider.value = Float(red)
         greenSlider.value = Float(green)
@@ -119,73 +109,43 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
         didSelect(color: color)
     }
     
-    //MARK:IBAction
+    // MARK:- IBAction
     @IBAction private func changedRedSlider(_ slider: UISlider) {
-        redLabel.text = NSString(format: "%.0f", slider.value) as String
-        let color = getColor()
-        hexTextField.text = getHexString(color: color)
-        didSelect(color: color)
+        redLabel.text = slider.value.colorFormatted
+        changedSlider()
     }
     
     @IBAction private func changedGreenSlider(_ slider: UISlider) {
-        greenLabel.text = NSString(format: "%.0f", slider.value) as String
-        let color = getColor()
-        hexTextField.text = getHexString(color: color)
-        didSelect(color: color)
+        greenLabel.text = slider.value.colorFormatted
+        changedSlider()
     }
     
     @IBAction private func changedBlueSlider(_ slider: UISlider) {
-        blueLabel.text = NSString(format: "%.0f", slider.value) as String
-        let color = getColor()
-        hexTextField.text = getHexString(color: color)
-        didSelect(color: color)
+        blueLabel.text = slider.value.colorFormatted
+        changedSlider()
     }
     
     @IBAction private func changedOpacitySlider(_ slider: UISlider) {
-        opacityLabel.text = NSString(format: "%.0f", slider.value) as String
+        opacityLabel.text = slider.value.colorFormatted
+        changedSlider()
+    }
+    
+    private func changedSlider() {
         let color = getColor()
-        hexTextField.text = getHexString(color: color)
+        hexTextField.text = color.colorCode
         didSelect(color: color)
     }
     
-    //MARK:Calculate
+    // MARK:- Calculate
     private func getColor() -> UIColor {
         let red = NSString(string: redLabel.text!).floatValue/255.0
         let green = NSString(string: greenLabel.text!).floatValue/255.0
         let blue = NSString(string: blueLabel.text!).floatValue/255.0
         let alpha = NSString(string: opacityLabel.text!).floatValue/100.0
-        return UIColor(red: CGFloat(red),
-                       green: CGFloat(green),
-                       blue: CGFloat(blue),
-                       alpha: CGFloat(alpha))
+        return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
     }
-    
-    private func getHexString(color: UIColor) -> String {
-        var red:CGFloat = 0
-        var green:CGFloat = 0
-        var blue:CGFloat = 0
-        var alpha:CGFloat = 0
-        color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        let rgb:Int = (Int)(red*255)<<16 | (Int)(green*255)<<8 | (Int)(blue*255)<<0
-        return NSString(format: "%06x", rgb) as String
-    }
-    
-    private func getHexColor(hexStr: String, alpha: CGFloat) -> UIColor {
-        let hexString = hexStr.replacingOccurrences(of: "#", with: "")
-        let scanner = Scanner(string: hexString)
-        var color: UInt32 = 0
-        if scanner.scanHexInt32(&color) {
-            let r = CGFloat((color & 0xFF0000) >> 16) / 255.0
-            let g = CGFloat((color & 0x00FF00) >> 8) / 255.0
-            let b = CGFloat(color & 0x0000FF) / 255.0
-            return UIColor(red:r,green:g,blue:b,alpha:alpha)
-        } else {
-            print("invalid hex string")
-            return UIColor.white
-        }
-    }
-    
-    //MARK:SetColor
+        
+    // MARK:- SetColor
     private func didSelect(color: UIColor) {
         colorView.backgroundColor = color
         setSliderColor(color: color)
@@ -193,20 +153,16 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
     }
     
     private func setSliderColor(color: UIColor) {
-        var red:CGFloat = 0
-        var green:CGFloat = 0
-        var blue:CGFloat = 0
-        color.getRed(&red, green: &green, blue: &blue, alpha: nil)
-        
-        redSlider.setGradient(startColor: UIColor(red: 0.0, green: green, blue: blue, alpha: 1.0),
-                              endColor: UIColor(red: 1.0, green: green, blue: blue, alpha: 1.0))
-        blueSlider.setGradient(startColor: UIColor(red: red, green: green, blue: 0.0, alpha: 1.0),
-                              endColor: UIColor(red: red, green: green, blue: 1.0, alpha: 1.0))
-        greenSlider.setGradient(startColor: UIColor(red: red, green: 0.0, blue: blue, alpha: 1.0),
-                              endColor: UIColor(red: red, green: 1.0, blue: blue, alpha: 1.0))
+        let rgba = color.rgba
+        redSlider.setGradient(startColor: .init(red: 0.0, green: rgba.green, blue: rgba.blue, alpha: 1.0),
+                              endColor: .init(red: 1.0, green: rgba.green, blue: rgba.blue, alpha: 1.0))
+        blueSlider.setGradient(startColor: .init(red: rgba.red, green: rgba.green, blue: 0.0, alpha: 1.0),
+                               endColor: .init(red: rgba.red, green: rgba.green, blue: 1.0, alpha: 1.0))
+        greenSlider.setGradient(startColor: .init(red: rgba.red, green: 0.0, blue: rgba.blue, alpha: 1.0),
+                                endColor: .init(red: rgba.red, green: 1.0, blue: rgba.blue, alpha: 1.0))
     }
     
-    //MARK:Close
+    // MARK:- Close
     func closeKeyboard() {
         hexTextField.resignFirstResponder()
     }

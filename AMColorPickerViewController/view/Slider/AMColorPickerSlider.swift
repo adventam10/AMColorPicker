@@ -10,9 +10,9 @@ import UIKit
 
 class AMColorPickerSlider: UISlider {
 
-    @IBInspectable var sliderTopSpace:CGFloat = 0
-    @IBInspectable var sliderSideSpace:CGFloat = 0
-    @IBInspectable var sliderColor:UIColor = UIColor.clear
+    @IBInspectable var sliderTopSpace: CGFloat = 0
+    @IBInspectable var sliderSideSpace: CGFloat = 0
+    @IBInspectable var sliderColor: UIColor = .clear
     
     override var bounds: CGRect {
         didSet {
@@ -28,8 +28,8 @@ class AMColorPickerSlider: UISlider {
     }
     
     private func initView() {
-        self.maximumTrackTintColor = UIColor.clear
-        self.minimumTrackTintColor = UIColor.clear
+        self.maximumTrackTintColor = .clear
+        self.minimumTrackTintColor = .clear
         
         let bundle = Bundle(for: AMColorPickerSlider.self)
         if let imagePath = bundle.path(forResource: "AMCP_slider_thumb@2x", ofType: "png") {
@@ -47,10 +47,8 @@ class AMColorPickerSlider: UISlider {
         let height = frame.height - sliderTopSpace*2
         let width = frame.width - sliderSideSpace*2
         
-        sliderLayer.frame = CGRect(x: sliderSideSpace,
-                                   y: sliderTopSpace,
-                                   width: width,
-                                   height: height)
+        sliderLayer.frame = CGRect(x: sliderSideSpace, y: sliderTopSpace,
+                                   width: width, height: height)
         sliderLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         sliderLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         sliderLayer.cornerRadius = 5.0
