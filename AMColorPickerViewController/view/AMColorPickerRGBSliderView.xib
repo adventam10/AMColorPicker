@@ -19,6 +19,7 @@
                 <outlet property="hexTextField" destination="P9i-wc-dGs" id="4oK-ZF-AF8"/>
                 <outlet property="opacityLabel" destination="pxl-D3-MsT" id="mJX-3z-AQA"/>
                 <outlet property="opacitySlider" destination="WnP-FV-ZtJ" id="bW0-fZ-VlT"/>
+                <outlet property="opacityStackView" destination="nDc-Up-Evk" id="q5U-Kh-Ma8"/>
                 <outlet property="redLabel" destination="fbf-sr-J3b" id="HQ6-Yi-ck7"/>
                 <outlet property="redSlider" destination="XRp-8f-32D" id="xcP-Qv-g6q"/>
                 <outlet property="rgbSliderStackView" destination="SeU-u0-S4F" id="lxl-3A-Wlu"/>
@@ -71,7 +72,7 @@
                                             </constraints>
                                             <color key="textColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         </textField>
                                     </subviews>
                                 </stackView>

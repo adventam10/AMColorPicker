@@ -18,18 +18,18 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMR-jc-QiD">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zBC-MB-zzr">
-                                <rect key="frame" x="159" y="280.5" width="57" height="106"/>
+                                <rect key="frame" x="159" y="60" width="57" height="106"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfc-Ej-KB3">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Fx-Kd-rKp">
                                         <rect key="frame" x="0.0" y="0.0" width="57" height="30"/>
-                                        <state key="normal" title="modal">
+                                        <state key="normal" title="popover">
                                             <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="tappedModalButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f1w-fH-MRT"/>
+                                            <action selector="tappedPopoverButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y9C-Lg-x72"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wfc-KQ-LVn">
@@ -41,13 +41,13 @@
                                             <action selector="tappedPushButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0HK-nR-P6C"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Fx-Kd-rKp">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfc-Ej-KB3">
                                         <rect key="frame" x="0.0" y="76" width="57" height="30"/>
-                                        <state key="normal" title="popover">
+                                        <state key="normal" title="modal">
                                             <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="tappedPopoverButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y9C-Lg-x72"/>
+                                            <action selector="tappedModalButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f1w-fH-MRT"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -59,8 +59,8 @@
                             <constraint firstItem="eMR-jc-QiD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Oen-Zf-4Ph"/>
                             <constraint firstItem="zBC-MB-zzr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YsC-JU-n3o"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eMR-jc-QiD" secondAttribute="bottom" id="dfO-YX-oXM"/>
+                            <constraint firstItem="zBC-MB-zzr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="gIf-g7-hAh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eMR-jc-QiD" secondAttribute="trailing" id="idA-rD-s8E"/>
-                            <constraint firstItem="zBC-MB-zzr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lnj-w8-AE9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

@@ -31,7 +31,7 @@ public class AMColorPickerViewController: UIViewController, AMColorPicker {
         }
     }
     
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak private var closeButton: UIButton!
     @IBOutlet weak private var cpWheelView: AMColorPickerWheelView!
     @IBOutlet weak private var cpTableView: AMColorPickerTableView!
     @IBOutlet weak private var cpSliderView: AMColorPickerRGBSliderView!

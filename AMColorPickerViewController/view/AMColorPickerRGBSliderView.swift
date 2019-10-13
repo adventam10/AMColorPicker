@@ -23,6 +23,20 @@ public class AMColorPickerRGBSliderView: XibLioadView, AMColorPicker {
         }
     }
     
+    override public var bounds: CGRect {
+        didSet {
+            rgbSliderStackView.spacing = bounds.height < 488 ? 16 : 32
+            if isKeyboardShown && bounds.height < 200 {
+                // when keyboard is shown (popover style)
+                rgbSliderStackView.isHidden = true
+                opacityStackView.isHidden = true
+            } else {
+                rgbSliderStackView.isHidden = false
+                opacityStackView.isHidden = false
+            }
+        }
+    }
+    
     @IBOutlet weak private var headerView: UIView!
     @IBOutlet weak private var redSlider: AMColorPickerSlider!
     @IBOutlet weak private var greenSlider: AMColorPickerSlider!
@@ -34,19 +48,21 @@ public class AMColorPickerRGBSliderView: XibLioadView, AMColorPicker {
     @IBOutlet weak private var blueLabel: UILabel!
     @IBOutlet weak private var opacityLabel: UILabel!
     @IBOutlet weak private var colorView: UIView!
+    @IBOutlet weak private var opacityStackView: UIStackView!
     @IBOutlet weak private var hexTextField: UITextField! {
         didSet {
             hexTextField.addTarget(self, action: #selector(self.didChange(textField:)), for: .editingChanged)
             hexTextField.delegate = self
+            
+            let notification = NotificationCenter.default
+            notification.addObserver(self, selector: #selector(keyboardWillShow(_:)),
+                                     name: UIResponder.keyboardWillShowNotification, object: nil)
+            notification.addObserver(self, selector: #selector(keyboardWillHide(_:)),
+                                     name: UIResponder.keyboardWillHideNotification, object: nil)
         }
     }
     
-    override public var bounds: CGRect {
-        didSet {
-            rgbSliderStackView.spacing = bounds.height < 488 ? 16 : 32
-        }
-    }
-    
+    private var isKeyboardShown: Bool = false
     private var previousText = ""
     
     private let colorCodeLength = 6
@@ -66,6 +82,15 @@ public class AMColorPickerRGBSliderView: XibLioadView, AMColorPicker {
             return
         }
         didSelect(color: UIColor(hex: newText, alpha: CGFloat(opacitySlider.value) / 100.0))
+    }
+    
+    // MARK:- Keyboard Notification
+    @objc func keyboardWillShow(_ notification: Notification?) {
+        isKeyboardShown = true
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification?) {
+        isKeyboardShown = false
     }
     
     // MARK:- IBAction
