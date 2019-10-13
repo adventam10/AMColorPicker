@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class AMColorPickerTableView: UIView, AMColorPicker {
+public class AMColorPickerTableView: XibLioadView, AMColorPicker {
 
     weak public var delegate: AMColorPickerDelegate?
     public var selectedColor: UIColor = .white {
@@ -42,27 +42,7 @@ public class AMColorPickerTableView: UIView, AMColorPicker {
         .init(title: "Red", color: .red), .init(title: "Yellow", color: .yellow),
         .init(title: "White", color: .white)
     ]
-    
-    // MARK:- Initialize
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-        loadNib()
-    }
-    
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        loadNib()
-    }
-    
-    private func loadNib() {
-        let bundle = Bundle(for: AMColorPickerTableView.self)
-        let view = bundle.loadNibNamed("AMColorPickerTableView", owner: self, options: nil)?.first as! UIView
-        view.frame = bounds
-        view.translatesAutoresizingMaskIntoConstraints = true
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(view)
-    }
-    
+
     // MARK:- IBAction
     @IBAction private func changedOpacitySlider(_ slider: UISlider) {
         opacityLabel.text = slider.value.colorFormatted

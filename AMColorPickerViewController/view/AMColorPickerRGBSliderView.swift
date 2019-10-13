@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
+public class AMColorPickerRGBSliderView: XibLioadView, AMColorPicker {
 
     weak public var delegate: AMColorPickerDelegate?
     public var selectedColor: UIColor = .white {
@@ -54,25 +54,6 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
     
     private var previousText = ""
     
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-        loadNib()
-    }
-    
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        loadNib()
-    }
-    
-    private func loadNib() {
-        let bundle = Bundle(for: AMColorPickerRGBSliderView.self)
-        let view = bundle.loadNibNamed("AMColorPickerRGBSliderView", owner: self, options: nil)?.first as! UIView
-        view.frame = bounds
-        view.translatesAutoresizingMaskIntoConstraints = true
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(view)
-    }
-        
     // MARK:- UITextField Action
     @objc func didChange(textField: UITextField) {
         // Retrieve the inputted characters
@@ -81,9 +62,7 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
         }
         
         let characterSet = CharacterSet(charactersIn: "0123456789abcdef")
-        let stringCharacterSet = CharacterSet(charactersIn: newText.lowercased())
-        
-        if !characterSet.isSuperset(of: stringCharacterSet) {
+        if !characterSet.isSuperset(of: CharacterSet(charactersIn: newText.lowercased())) {
             textField.text = previousText
             return
         }
@@ -169,8 +148,7 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
 }
 
 extension AMColorPickerRGBSliderView: UITextFieldDelegate {
-    public func textField(_ textField: UITextField,
-                          shouldChangeCharactersIn range: NSRange,
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                           replacementString string: String) -> Bool {
         // Get the inputted text
         let currentText = textField.text ?? ""

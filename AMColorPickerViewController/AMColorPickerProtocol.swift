@@ -77,3 +77,25 @@ extension String {
         return CGFloat(Float(self)!)
     }
 }
+
+public class XibLioadView: UIView {
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        loadNib()
+    }
+    
+    required public init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+        loadNib()
+    }
+    
+    private func loadNib() {
+        let bundle = Bundle(for: type(of: self))
+        let nibName = type(of: self).description().components(separatedBy: ".").last!
+        let view = bundle.loadNibNamed(nibName, owner: self, options: nil)?.first as! UIView
+        view.frame = bounds
+        view.translatesAutoresizingMaskIntoConstraints = true
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(view)
+    }
+}

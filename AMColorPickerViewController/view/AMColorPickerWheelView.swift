@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class AMColorPickerWheelView: UIView, AMColorPicker {
+public class AMColorPickerWheelView: XibLioadView, AMColorPicker {
     
     weak public var delegate: AMColorPickerDelegate?
     public var selectedColor: UIColor = .white {
@@ -52,26 +52,6 @@ public class AMColorPickerWheelView: UIView, AMColorPicker {
     }
     private var pickerCenter: CGPoint {
         return colorPickerImageView.center
-    }
-    
-    // MARK:- Initialize
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-        loadNib()
-    }
-    
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        loadNib()
-    }
-    
-    private func loadNib() {
-        let bundle = Bundle(for: AMColorPickerWheelView.self)
-        let view = bundle.loadNibNamed("AMColorPickerWheelView", owner: self, options: nil)?.first as! UIView
-        view.frame = bounds
-        view.translatesAutoresizingMaskIntoConstraints = true
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(view)
     }
     
     override public func draw(_ rect: CGRect) {
