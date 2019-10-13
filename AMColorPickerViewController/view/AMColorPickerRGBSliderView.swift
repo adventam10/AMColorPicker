@@ -92,8 +92,8 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
             return
         }
         
-        let alpha = NSString(string: opacityLabel.text!).floatValue/100.0
-        let color = UIColor(hex: newText, alpha: CGFloat(alpha))
+        let alpha = opacityLabel.text!.cgFloatValue / 100.0
+        let color = UIColor(hex: newText, alpha: alpha)
         let rgba = color.rgba
         let red = rgba.red * 255
         let green = rgba.green * 255
@@ -138,11 +138,11 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
     
     // MARK:- Calculate
     private func getColor() -> UIColor {
-        let red = NSString(string: redLabel.text!).floatValue/255.0
-        let green = NSString(string: greenLabel.text!).floatValue/255.0
-        let blue = NSString(string: blueLabel.text!).floatValue/255.0
-        let alpha = NSString(string: opacityLabel.text!).floatValue/100.0
-        return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
+        let red = redLabel.text!.cgFloatValue / 255.0
+        let green = greenLabel.text!.cgFloatValue / 255.0
+        let blue = blueLabel.text!.cgFloatValue / 255.0
+        let alpha = opacityLabel.text!.cgFloatValue / 100.0
+        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
         
     // MARK:- SetColor

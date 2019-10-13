@@ -35,8 +35,16 @@ public class AMColorPickerWheelView: UIView, AMColorPicker {
     @IBOutlet weak private var opacitySlider: UISlider!
     @IBOutlet weak private var colorView: UIView!
     @IBOutlet weak private var brightnessSlider: AMColorPickerSlider!
-    
-    @IBOutlet weak private var colorPickerImageView: UIImageView!
+    @IBOutlet weak private var colorPickerImageView: UIImageView! {
+        didSet {
+            colorPickerImageView.isUserInteractionEnabled = true
+            let pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(gesture:)))
+            colorPickerImageView.addGestureRecognizer(pan)
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapAction(gesture:)))
+            colorPickerImageView.addGestureRecognizer(tap)
+        }
+    }
     @IBOutlet weak private var cursorImageView: UIImageView!
     
     private var radius: CGFloat {
@@ -64,13 +72,6 @@ public class AMColorPickerWheelView: UIView, AMColorPicker {
         view.translatesAutoresizingMaskIntoConstraints = true
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
-        
-        colorPickerImageView.isUserInteractionEnabled = true
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(gesture:)))
-        colorPickerImageView.addGestureRecognizer(pan)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapAction(gesture:)))
-        colorPickerImageView.addGestureRecognizer(tap)
     }
     
     override public func draw(_ rect: CGRect) {
@@ -112,7 +113,8 @@ public class AMColorPickerWheelView: UIView, AMColorPicker {
     private func setSliderColor(color: UIColor) {
         let hsba = color.hsba
         brightnessSlider.setGradient(startColor: .clear,
-                                     endColor: .init(hue: hsba.hue, saturation: hsba.saturation, brightness: 1.0, alpha: 1.0))
+                                     endColor: .init(hue: hsba.hue, saturation: hsba.saturation,
+                                                     brightness: 1.0, alpha: 1.0))
     }
     
     private func didSelect(color: UIColor) {

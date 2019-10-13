@@ -72,8 +72,8 @@ public class AMColorPickerTableView: UIView, AMColorPicker {
     // MARK:- SetColor
     private func didSelect(color: UIColor) {
         let rgba = color.rgba
-        let alpha = NSString(string: opacityLabel.text!).floatValue/100.0
-        let selectColor = UIColor(red: rgba.red, green: rgba.green, blue: rgba.blue, alpha: CGFloat(alpha))
+        let alpha = opacityLabel.text!.cgFloatValue / 100.0
+        let selectColor = UIColor(red: rgba.red, green: rgba.green, blue: rgba.blue, alpha: alpha)
         colorView.backgroundColor = selectColor
         delegate?.colorPicker(self, didSelect: selectColor)
     }

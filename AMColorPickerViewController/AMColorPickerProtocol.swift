@@ -71,3 +71,9 @@ extension Float {
         return String(format: "%.0f", self)
     }
 }
+
+extension String {
+    var cgFloatValue: CGFloat {
+        return CGFloat(Float(self)!)
+    }
+}
