@@ -30,7 +30,13 @@ public class AMColorPickerViewController: UIViewController, AMColorPicker {
             cpSliderView?.isSelectedColorShown = isSelectedColorShown
         }
     }
-    
+    public var predefinedColors: [AMCPCellInfo] = [] {
+        didSet {
+            cpTableView?.dataList = predefinedColors
+            cpTableView?.reloadTable()
+        }
+    }
+
     @IBOutlet weak private var closeButton: UIButton!
     @IBOutlet weak private var cpWheelView: AMColorPickerWheelView!
     @IBOutlet weak private var cpTableView: AMColorPickerTableView!

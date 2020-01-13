@@ -37,7 +37,7 @@ public class AMColorPickerTableView: XibLioadView, AMColorPicker {
     }
     
     private let cellIdentifier = "AMColorPickerTableViewCell"
-    private let dataList: [AMCPCellInfo] = [
+    var dataList: [AMCPCellInfo] = [
         .init(title: "Black", color: .black), .init(title: "Blue", color: .blue),
         .init(title: "Brown", color: .brown), .init(title: "Cyan", color: .cyan),
         .init(title: "Green", color: .green), .init(title: "Magenta", color: .magenta),
