@@ -8,9 +8,15 @@
 
 import UIKit
 
-struct AMCPCellInfo {
+public struct AMCPCellInfo {
     var title: String
     var color: UIColor
+
+    public init(title: String, color: UIColor) {
+        self.title = title
+        self.color = color
+    }
+
 }
 
 class AMColorPickerTableViewCell: UITableViewCell {
@@ -21,6 +27,9 @@ class AMColorPickerTableViewCell: UITableViewCell {
     var info: AMCPCellInfo! {
         didSet {
             titleLabel.text = info.title
+            if #available(iOS 11.0, *) {
+                titleLabel.textColor = UIColor(named: "textColor")
+            }
             colorView.backgroundColor = info.color
         }
     }
